@@ -1,0 +1,562 @@
+.fullWidthContainer {
+    margin-top: 4em;
+    max-width: 90em;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-primary {
+    background-color: #1c3f7b;
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+     background-color: #1c3f7b;
+    border-color: transparent;
+}
+
+/*Footer*/
+
+.row#footerArea {
+    max-width: 100%;
+    margin: auto;
+}
+
+.row#bottom_footerArea {
+    margin: auto;
+    width: 90%;
+}
+
+#bottom_footer {
+    max-width: 100%;
+    /*padding-bottom: 1vh;*/
+}
+
+#footerP {
+    margin-top: 1.25rem;
+}
+
+.form-inline {
+    display: block !important;
+}
+
+.form-inline label {
+    display: block !important;
+}
+
+/* Footer continued */
+
+.footerButton {
+    max-width: 350px;
+    min-width: 100px;
+    /*prevents "Programs" from overflowing */
+    width: 100%;
+    border-width: 2px;
+    border-color: white;
+    background-color: #1c3f7b42;
+    color: #ffffff;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#footerButtons {
+    margin: auto;
+}
+.socialIconsColumn {
+    display: flex;
+}
+.footerSocialIcons {
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+#bottom_footer {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#footerLogoColumn {
+    display: flex;
+    align-items: center;
+}
+.fa-facebook:hover {
+    color: #3b5998;
+}
+.fa-twitter:hover {
+    color: #00aced;
+}
+.fa-instagram:hover {
+    color: #bc2a8d;
+}
+.fa-youtube-play:hover {
+    color: #c4302b;
+}
+#bottom_footer, #footerArea {
+    max-width: 90em !important;
+    margin: auto;
+}
+.footerAreaWrapper {
+    width: 100%;
+    background-color: #1C3F7B;
+}
+.bottom_footerWrapper {
+    width: 100%;
+    background-color: #c0c0c0;
+}
+.footer_links_black {
+    color: #152f5b !important;
+}
+#footerLinksRow, #footerAddress {
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+#footerModule {
+    margin-top: auto;
+}
+
+/*Top right links*/
+
+#topright_shapecontainer {
+  	display: flex;
+}
+
+#topright_rectangle {		
+    width: 100%;
+    max-width: 300px;
+    height: 45px;
+    background: #c69e29;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topright_rightslant {
+	width: 0;
+    height: 0;
+    border-top: 50px solid #c69e29;
+    border-right: 24px solid transparent;
+}
+
+#topright_leftslant {
+	width: 0;
+    height: 0;
+    border-bottom: 50px solid #c69e29;
+    border-left: 24px solid transparent;
+}
+	
+ul#top-right-links-ul {
+    font-family: LatoBlack;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+ul#top-right-links-ul li {
+    display: block;
+    flex: 0 1 auto;
+    list-style-type: none;
+    color: white;
+}
+
+/* Top left links */
+
+#quickLinkTable {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/*Logo styles*/
+
+.logo {
+    height: auto;
+    width: calc(98vw / 7);
+    position: fixed;
+    z-index: 3;
+    color: white;
+    background-color: #1c3f7b;
+    transition: all 0.5s;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    max-width: 200px;
+}
+.logo.shrink {
+    height: auto;
+    width: calc(98vw / 8);
+    max-width: 150px;
+}
+
+#logoRow {
+    max-width: 100%;
+    position: fixed;
+    z-index:1;
+    background-color: white;
+    padding: 0;
+}
+
+.secondBar {
+    position: fixed;
+    z-index:2;
+}
+
+.leftmainmenu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#mainNavSection {
+    width: 100%;
+}
+
+.top_icons_row{
+    display: none;
+}
+
+.logo_menu_style {
+    background-color: #1c3f7b !important;
+}
+
+/* Styles for curtain reveal of element at bottom of page */
+
+.curtain-container {
+    position: relative;
+    z-index: 0;
+    margin-bottom: 17vmin;
+    background-color: white;
+    min-height: 100vh;    
+    display: flex;
+    flex-direction: column;
+}
+
+.revealed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 17vmin;
+    background-color: white;
+    z-index: -1;
+}
+
+/* Hashtag Styles */
+
+.hashtagHeader {
+    text-align: center;
+    color: #d4e5ec;
+}
+
+.hashtagSpan {
+    font-size: 11vmin; 
+    color: #1c3f7b;
+}
+
+.social_icons{
+    width: 15%;
+}
+
+/*Main menu styles*/
+.menu_style { 
+    width: calc(98vw / 7) !important; 
+} 
+
+
+.main-menu {
+    width: calc(98vw / 7);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.top-bar-section .has-dropdown > a {
+    padding-right: 10px !important;
+    /*padding-left: 10px !important;*/
+}
+
+#mainNav {
+    max-width: 100%;
+}
+
+.footer_links_black {
+    color: black !important;
+    font-size: 1em !important;
+}
+
+.show-for-640-850-size {
+    display: none;
+}
+
+.navFiller {
+    display: block;
+    margin-top: 90px; /* Height of nav is 90px; */
+}
+
+
+/* Custom Google Seach Styles */
+
+#searchModal {
+    padding: 5px 20px;
+    margin: auto;
+    max-width: 1000px;
+    left: 0;
+    right: 0;
+}
+#searchModal h2 {
+    position: relative;
+    top: .5rem;
+    left: 5px;
+    margin-bottom: 0;
+}
+
+#closeSearch {
+    font-size: 2em;
+    color: #2b2b2b;
+}
+
+.gsc-input ::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent;
+}
+.gsc-input :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: transparent;
+}
+.gsc-input ::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: transparent;
+}
+.gsc-input :-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: transparent;
+}
+
+/* Department Banner styles */
+
+.department-banner {
+    width: 100%;
+}
+
+
+/* Media Queries */
+
+/* IE 10+ */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+	#topLeftLinkList {
+		justify-content: space-around !important;
+	}
+
+	#banner-bottom {
+		justify-content: space-around !important;
+	}
+
+	.show-for-640-850-size {
+		justify-content: space-around !important;
+	}
+
+	.footerSocialIcons {
+	    justify-content: space-around !important;
+	    margin: auto !important;
+	    align-items: center !important;
+	}
+}
+
+/* Microsoft Edge */
+@supports (-ms-ime-align:auto) { 
+	#topLeftLinkList {
+		justify-content: space-around !important;
+	}
+
+	#banner-bottom {
+		justify-content: space-around !important;
+	}
+
+	.show-for-640-850-size {
+		justify-content: space-around !important;
+	}
+
+	.footerSocialIcons {
+	    justify-content: space-around !important;
+	    margin: auto !important;
+	    align-items: center !important;
+	}
+}
+
+/* 1920px */
+@media screen and (min-width: 120em) {
+    .btn-huge {
+        padding: 20px;
+    }
+
+    .social_icons {
+        width: 10%;
+    }
+}
+
+/* 1080px to 1919px */
+	@media screen and (min-width: 67.5em) and (max-width: 119.9375em){
+		.btn-huge {
+			padding: 10px;
+		}
+	}
+
+
+/* 850px and down*/
+@media screen and (max-width: 53.125em) { 
+    .mobile_menu_style { 
+        display: none !important; 
+    }
+
+    .menu_style {
+        width: 100% !important;
+    }
+
+    .show-for-640-850-size {
+      display: flex;
+      justify-content: space-between;
+      /* justify-content: space-evenly; Removed for iOS support */
+      align-items: center;
+      height: 45px;
+      margin:auto;
+      /* Hardcoded because height of nav never changes */
+    }
+}
+
+/* 851px and up */
+@media screen and (min-width: 53.188em) {
+    a.calendar_menu ~ ul { /* Applies style to sibling ul elements on the same level as the a */
+        right: 0 !important;
+        left: auto !important;
+    }
+}
+
+/* 641px to 850px */
+@media screen and (min-width: 40.063em) and (max-width: 53.125em) {
+        .top_icons_row {
+            display: inline !important;
+        }
+        #large_top_left_links {
+            display: none !important;
+        }
+
+        ul.nav.menu.left, ul.nav.menu.left li ul.dropdown {
+            max-height: calc(100vh - 90px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+}
+
+/* 700px and down */
+@media screen and (max-width: 43.750em) { 
+    #topright_shapecontainer {
+        display: none;
+    }
+}
+
+/* 641px and up*/
+@media screen and (min-width: 40.063em) {
+        #allNav {
+        position: fixed;
+        z-index: 100;
+    }
+}
+
+/* 640px and down */
+@media screen and (max-width: 40.063em) { 
+    #logoRow {
+        position: static;
+    }
+
+    .secondBar {
+        position: static;
+    }
+
+    .image-wrapper {
+        margin-top: 0;
+    }
+
+    #bottom_footerArea h3{
+        font-size: 1.2em !important;
+    }
+
+    #bottom_footerArea p{
+        font-size: 0.8em !important;
+    }
+
+    .social_icons{
+        width: 10% !important;
+    }
+
+    .navFiller {
+        display: none;
+    }
+
+    #div-table-header {
+        display: none;
+    }
+
+    .footerSocialIcons {
+        padding-top: 0;
+        justify-content: space-between;
+        max-width: 350px;
+    }
+
+    #footerLinksRow {
+        margin-top: 1em;
+    }
+
+    div.gsc-control-cse {
+        padding: 0;
+    }
+    div#searchModal.reveal-modal.open {
+        padding: 15px;
+    }
+}
+
+/* 480px and down */
+@media screen and (max-width: 30.063em) {
+    #footerLogoColumn {
+        display: none;
+    }
+    .xsmall-12 {
+        width: 100%;
+    }
+}
+
+dt.level1.off-nav-1537.notparent {
+    display: none;
+}
+/*Fonts*/
+
+@font-face {
+    font-family: GillSansMTRegular;
+    src: url(https://www.gsw.edu/Assets/UniversityRelations/files/fonts/Gill-Sans-MT-Regular.ttf);
+}
+
+@font-face {
+    font-family: HelveticaBold;
+    src: url(https://www.gsw.edu/Assets/UniversityRelations/files/fonts/Helvetica-Bold.otf);
+}
+
+@font-face {
+    font-family: HelveticaRegular;
+    src: url(https://www.gsw.edu/Assets/UniversityRelations/files/fonts/Helvetica-Regular.ttf);
+}
+
+@font-face {
+    font-family: LatoBlack;
+    src: url(https://www.gsw.edu/Assets/UniversityRelations/files/fonts/Lato-Black.ttf);
+}
+
+@font-face {
+    font-family: SignPainterHouseScript;
+    src: url(https://www.gsw.edu/Assets/UniversityRelations/files/fonts/SignPainter-HouseScript.ttf);
+}
+
