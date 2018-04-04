@@ -1,7 +1,0 @@
-angular.module('smiApp')
-.controller('AssignToController', function ($scope, $modalInstance,rulesServices,$rootScope,items) {
-	
-	 $scope.cancel = function () {
-	      $modalInstance.dismiss('cancel');
-	    };
-});

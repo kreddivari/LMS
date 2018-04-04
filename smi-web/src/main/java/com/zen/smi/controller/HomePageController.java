@@ -21,12 +21,7 @@ import com.zen.smi.exception.BusinessException;
 import com.zen.smi.exception.InvalidLoginException;
 import com.zen.smi.service.UserService;
 
-/**
- * HomePageController class manage Timesheet related data. Data from screens
- * is transferred to the controller and passed to services/dao.
- * 
- * @author 
- */
+
 @Controller
 public class HomePageController extends BaseController {
 	
@@ -40,39 +35,24 @@ public class HomePageController extends BaseController {
 	
 	@RequestMapping("/")
     public String getIndexPage() {
-        return "login";
+        return "gsw";
     }
 	
 	@RequestMapping("/login")
     public String getLoginPage(HttpServletRequest request,
 			HttpServletResponse response) {
 		boolean isCompatible = checkBrowserCompatibility(request.getHeader("User-Agent"));
-		if(!isCompatible) return "errbrowser";
-		
-		return "login";
+		if(!isCompatible) return "errbrowser";		
+		return "gsw";
     }
-	
 	
 	@RequestMapping("/home")
     public String getHomePage() {
         return "home";
     }
-	@RequestMapping("/arms_symptoms")
-    public String getArms() {
-        return "arms_symptoms";
-    }
-	
-	@RequestMapping("/feet_symptoms")
-    public String getFeet() {
-        return "feet_symptoms";
-    }
-	@RequestMapping("/legs_symptoms")
-    public String getLeg() {
-        return "legs_symptoms";
-    }
-	@RequestMapping("/hands_symptoms")
-    public String getHands() {
-        return "hands_symptoms";
+	@RequestMapping("/books")
+    public String getbooksPage() {
+        return "books";
     }
 	
 	@RequestMapping(value = "/current_user", method = RequestMethod.GET)
@@ -99,8 +79,7 @@ public class HomePageController extends BaseController {
 		try {
 			
 			UserBO userBO= gson.fromJson(userJson, UserBO.class);
-			resultJson=	userService.createUser(userBO);
-			
+			resultJson=	userService.createUser(userBO);			
 		} catch (Throwable th) {
 			th.printStackTrace();
 			resultJson = handleOtherError(th);
@@ -111,11 +90,9 @@ public class HomePageController extends BaseController {
 	public @ResponseBody String getUser(@PathVariable("userName") String userName,HttpServletRequest request,
 			HttpServletResponse response) throws BusinessException {
 		String resultJson = null;
-		try {
-			
+		try {			
 			UserBO userBO= 	userService.getUserByUserName(userName);
-			resultJson=gson.toJson(userBO,UserBO.class);
-			
+			resultJson=gson.toJson(userBO,UserBO.class);			
 		} catch (Throwable th) {
 			th.printStackTrace();
 			resultJson = handleOtherError(th);
@@ -127,11 +104,7 @@ public class HomePageController extends BaseController {
 	@RequestMapping("/header")
     public String getHeaderPage() {
         return "header";
-    }
-	@RequestMapping("/items")
-    public String getNav() {
-        return "items";
-    }
+    }	
 	@RequestMapping("/profile")
     public String getRightBar() {
         return "profile";
@@ -141,12 +114,6 @@ public class HomePageController extends BaseController {
     public String getDashboard() {
         return "signup";
     }
-	
-	
-	
-	
-	
-	
 	
 	@RequestMapping("/registerUser")
     public String getregistration() {
@@ -162,21 +129,16 @@ public class HomePageController extends BaseController {
     public String getMyProfile() {
         return "my_profile";
     }
-	
-	
+		
     /**
 	 * @return logout
 	 */
 	@RequestMapping("/logout")
     public String getLogout(HttpServletRequest request,
-			HttpServletResponse response) {
-		 
-		request.getSession().invalidate();
-		
+			HttpServletResponse response) {		 
+		request.getSession().invalidate();		
         return "login";
-    }
-	
-    
+    }    
     /**
      * @return footer
      */
@@ -209,8 +171,7 @@ public class HomePageController extends BaseController {
     		{
     			return "redirect:/login?error=1";
     		}
-     	}
-    		      
+     	}    		      
         return "globalerror";
     }
 	

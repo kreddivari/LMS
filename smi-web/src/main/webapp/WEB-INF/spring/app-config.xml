@@ -9,27 +9,30 @@
 
    <context:annotation-config/>
    <!-- Services -->
-   <bean id="userService" class="com.zen.smi.service.impl.UserServiceImpl">
-         <property name="userDAO">
-            <bean class="com.zen.smi.dao.impl.UsersDAOImpl" />
-        </property>
-        <property name="usersRolesDAO">
-            <bean class="com.zen.smi.dao.impl.UsersRolesDAOImpl" />
-        </property>
-         <property name="rolesDAO">
-            <bean class="com.zen.smi.dao.impl.RolesDAOImpl" />
-        </property>
-        
-   </bean>
-   
+   <bean id="userService" class="com.zen.smi.service.impl.UserServiceImpl"/>   
+   <bean id="bookService" class="com.zen.smi.service.impl.BookServiceImpl"/>
+   <bean id="categoryService" class="com.zen.smi.service.impl.CategoryServiceImpl"/>
+   <bean id="fineService" class="com.zen.smi.service.impl.FineServiceImpl"/>
+   <bean id="notificationService" class="com.zen.smi.service.impl.NotificationServiceImpl"/>
+   <bean id="roomService" class="com.zen.smi.service.impl.RoomServiceImpl"/>
+       
+   <bean id="rolesDAO" class="com.zen.smi.dao.impl.RolesDAOImpl"/>       
+   <bean id="userDAO" class="com.zen.smi.dao.impl.UsersDAOImpl"/>
+   <bean id="messagesDAO" class="com.zen.smi.dao.impl.MessagesDAOImpl"/>
+   <bean id="usersRolesDAO" class="com.zen.smi.dao.impl.UsersRolesDAOImpl"/>
+   <bean id="booksDAO" class="com.zen.smi.dao.impl.BooksDAOImpl"/>
+   <bean id="finesDAO" class="com.zen.smi.dao.impl.FinesDAOImpl"/>
+   <bean id="notificationDAO" class="com.zen.smi.dao.impl.NotificationDAOImpl"/>
+   <bean id="roomDAO" class="com.zen.smi.dao.impl.RoomDAOImpl"/>  
+   <bean id="categoryDAO" class="com.zen.smi.dao.impl.CategoryDAOImpl"/>
+		
    
     <bean id="gson" class="com.google.gson.Gson"/>
-   <bean id="sessionExpiredInterceptor" class="com.zen.smi.controller.SessionExpiredInterceptor">
-   		
-   </bean>
+   
+   <bean id="sessionExpiredInterceptor" class="com.zen.smi.controller.SessionExpiredInterceptor"/>   
    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
       <property name="interceptors">
         <ref bean="sessionExpiredInterceptor"/>
-</property>
- </bean>
+      </property>
+   </bean>
 </beans>

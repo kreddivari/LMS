@@ -1,13 +1,8 @@
 package com.zen.smi.security;
 
 import java.security.MessageDigest;
-import java.util.Base64;
 import java.util.EnumSet;
 import java.util.Set;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,29 +35,6 @@ public class SMIAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private UserService userService;
 	    
-	
-	public static String decrypt(String encryptedText, SecretKey secretKey,Cipher cipher)
-			throws Exception {
-		Base64.Decoder decoder = Base64.getDecoder();
-		byte[] encryptedTextByte = decoder.decode(encryptedText);
-		cipher.init(Cipher.DECRYPT_MODE, secretKey);
-		byte[] decryptedByte = cipher.doFinal(encryptedTextByte);
-		String decryptedText = new String(decryptedByte);
-		return decryptedText;
-	}
-	
-	
-	 public static String encrypt(String plainText, SecretKey secretKey,Cipher cipher)
-				throws Exception {
-			byte[] plainTextByte = plainText.getBytes();
-			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-			byte[] encryptedByte = cipher.doFinal(plainTextByte);
-			Base64.Encoder encoder = Base64.getEncoder();
-			String encryptedText = encoder.encodeToString(encryptedByte);
-			return encryptedText;
-		}
-
-	
     /* (non-Javadoc)
      * @see org.springframework.security.authentication.AuthenticationProvider#authenticate(org.springframework.security.core.Authentication)
      */
@@ -81,20 +53,10 @@ public class SMIAuthenticationProvider implements AuthenticationProvider {
         	{
         		throw new InvalidLoginException(null, null, "Invalid password.");
         	}
-        	try {
-				KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-				keyGenerator.init(128);
-				SecretKey secretKey = keyGenerator.generateKey();
-				Cipher cipher = Cipher.getInstance("AES");
-				//password=decrypt(password,secretKey,cipher);
-				System.out.println("encrypted password:################"+password);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-        	;
+        	password = encrypt(password);
         	Set<SMIAuthority> roles = EnumSet.noneOf(SMIAuthority.class);
         	UserBO userBO = userService.authenticate(userName, password);
-        	if(userBO == null||null==userBO)
+        	if(userBO == null)
         	{
         		throw new InvalidLoginException(null, null, "Invalid credential.");
         	}
@@ -123,5 +85,26 @@ public class SMIAuthenticationProvider implements AuthenticationProvider {
     	 return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
     
-  
+    private String encrypt(String password) {
+    	 String encryptedPasswd = null;
+    	 try {
+             MessageDigest md = MessageDigest.getInstance("MD5");
+             md.update(password.getBytes()); 
+          	 byte[] output = md.digest();
+          	encryptedPasswd = bytesToHex(output);
+          } catch (Exception e) {
+             e.printStackTrace();
+          }
+    	 return encryptedPasswd;
+    }
+    private String bytesToHex(byte[] b) {
+        char hexDigit[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                           '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        StringBuffer buf = new StringBuffer();
+        for (int j=0; j<b.length; j++) {
+           buf.append(hexDigit[(b[j] >> 4) & 0x0f]);
+           buf.append(hexDigit[b[j] & 0x0f]);
+        }
+        return buf.toString();
+     }
 }

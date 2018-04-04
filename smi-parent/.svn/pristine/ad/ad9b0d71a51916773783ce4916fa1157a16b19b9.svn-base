@@ -1,4 +1,0 @@
-function HomePageController($rootScope, $scope) {
-	
-	
-}
