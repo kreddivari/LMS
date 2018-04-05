@@ -257,6 +257,6 @@
        </dependency>		
 	</dependencies>	
   <build>
-    <finalName>smi</finalName>
+    <finalName>lms</finalName>
   </build>
 </project>
