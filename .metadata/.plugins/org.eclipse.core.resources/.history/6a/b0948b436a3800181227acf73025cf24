@@ -28,8 +28,8 @@
 	   <version>1.9.2</version>
    </dependency>
    <dependency>
-       <groupId>com.lms</groupId>
-       <artifactId>lms-dao</artifactId>
+       <groupId>com.zen.smi</groupId>
+       <artifactId>smi-dao</artifactId>
        <version>0.0.1-SNAPSHOT</version>
        <type>jar</type>
     </dependency>

@@ -245,8 +245,8 @@
 			<version>2.3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.lms</groupId>
-			<artifactId>lms-business</artifactId>
+			<groupId>com.zen.smi</groupId>
+			<artifactId>smi-business</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>jar</type>
 		</dependency>
