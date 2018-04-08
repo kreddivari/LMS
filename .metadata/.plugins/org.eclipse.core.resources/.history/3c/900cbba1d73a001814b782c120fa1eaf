@@ -1,0 +1,12 @@
+package com.zen.smi.service;
+
+import com.zen.smi.bo.BookBO;
+import com.zen.smi.bo.UserBO;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.exception.UserException;
+
+public interface BookService {
+
+	BookBO getbookByName(String name) throws BusinessException;	
+	String createbook(BookBO bookBO) throws BusinessException;	
+}
