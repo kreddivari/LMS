@@ -37,6 +37,7 @@ public class HomePageController extends BaseController {
     public String getIndexPage() {
         return "gsw";
     }
+
 	
 	@RequestMapping("/login")
     public String getLoginPage(HttpServletRequest request,

@@ -1,5 +1,7 @@
 package com.zen.smi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,5 +46,18 @@ public class BookController extends BaseController {
 		return bookJson;
 	}
 	
+	@RequestMapping(value = "/all_books", method = RequestMethod.GET)
+	public @ResponseBody String getAllBooks(HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String bookJson = null;
+		try {			
+			List<BookBO> booksBO=bookService.getAllBooks();	
+			bookJson=gson.toJson(booksBO);
+		} catch (Throwable th) {
+			th.printStackTrace();
+			bookJson = handleOtherError(th);
+		}
+		return bookJson;
+	}
 	
 }

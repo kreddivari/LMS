@@ -1,5 +1,8 @@
 package com.zen.smi.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.zen.smi.bo.BookBO;
@@ -16,7 +19,7 @@ public class BookServiceImpl extends BaseService implements BookService {
 
    
 
-	public UserBO getbookByName(String name) throws BusinessException {
+	public BookBO getbookByName(String name) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -38,5 +41,24 @@ public class BookServiceImpl extends BaseService implements BookService {
             throw new BusinessException(e);			
 		}		
 		return result;
+	}
+
+	public List<BookBO> getAllBooks() throws BusinessException {
+		List<BookBO> booksBO=new ArrayList<BookBO>();
+		try {
+			List<Book> books=getBooksDAO().getAllBooks();
+			for(Book book:books){
+				BookBO bookBO=new BookBO();
+				bookBO.setBkAuthor(book.getBkAuthor());
+				bookBO.setBkName(book.getBkName());
+				bookBO.setBkYear(book.getBkYear());
+				bookBO.setId(book.getId());
+				bookBO.setStatusFlag(book.getStatusFlag());
+				booksBO.add(bookBO);				
+			}
+		} catch (GenericDAOException e) {
+			throw new BusinessException(e);			
+		}
+		return booksBO;
 	}	
 }

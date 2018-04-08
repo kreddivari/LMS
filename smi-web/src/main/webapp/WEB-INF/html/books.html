@@ -30,11 +30,22 @@
     background: linear-gradient(to bottom right, #1C3F7B 0%, #37a1e7100%);
    
 }
-		</style>
+</style>
 <style type="text/css"> #u-left-panel{ min-height: 800px; } .content-panel{ min-height: 720px;} </style><style type="text/css">.oridomi-active{background-color:transparent !important;background-image:none !important;-webkit-box-sizing:border-box !important;border:none !important;outline:none !important;padding:0 !important;-webkit-transform-style:preserve-3d !important;-webkit-mask:none !important;position:relative;}.oridomi-clone{margin:0 !important;-webkit-box-sizing:border-box !important;overflow:hidden !important;display:block !important;}.oridomi-holder{width:100%;position:absolute;top:0;bottom:0;-webkit-transform-style:preserve-3d;}.oridomi-stage{width:100%;height:100%;position:absolute;-webkit-transform:translate3d(-9999px, 0, 0);margin:0;padding:0;-webkit-transform-style:preserve-3d;}.oridomi-stage-left{-webkit-perspective-origin:0% 50%;}.oridomi-stage-right{-webkit-perspective-origin:100% 50%;}.oridomi-stage-top{-webkit-perspective-origin:50% 0%;}.oridomi-stage-bottom{-webkit-perspective-origin:50% 100%;}.oridomi-shader{width:100%;height:100%;position:absolute;opacity:0;top:0;left:0;pointer-events:none;-webkit-transition-property:opacity;}.oridomi-shader-left{background:-webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);}.oridomi-shader-right{background:-webkit-linear-gradient(right, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);}.oridomi-shader-top{background:-webkit-linear-gradient(top, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);}.oridomi-shader-bottom{background:-webkit-linear-gradient(bottom, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .35) 100%);}.oridomi-content{margin:0 !important;position:relative !important;float:none !important;-webkit-box-sizing:border-box !important;overflow:hidden !important;}.oridomi-mask{width:100%;height:100%;position:absolute;overflow:hidden;-webkit-transform:translate3d(0, 0, 0);outline:1px solid transparent;}.oridomi-panel{width:100%;height:100%;padding:0;position:absolute;-webkit-transition-property:-webkit-transform;-webkit-transform-origin:left;-webkit-transform-style:preserve-3d;}.oridomi-panel-h{-webkit-transform-origin:top;}.oridomi-stage-right .oridomi-panel{-webkit-transform-origin:right;}.oridomi-stage-bottom .oridomi-panel{-webkit-transform-origin:bottom;}</style></head>
 <script>
 $(document).ready(function(){
-   
+	$.ajax({
+		  url: "all_books",
+		  type: "GET",		 
+		  success: function(response){	
+			 var key= $.parseJSON(response);	
+			 for(var i=0;i<key.length;i++){
+			 var article='<article id="article+'+key[i].id+'" class="box" style="width:70%"><figure class="col-xs-3 col-sm-2"><span><img width="94" height="90" alt=""  src="resources/images/gsw.png"></span></figure><div class="details col-xs-9 col-sm-10"><div class="details-wrapper" style="width:auto"><div class="first-row"><div><h4 class="box-title">'+key[i].bkName+'</h4></div><div><span class="price"><small>STATUS</small>available</span></div> </div><div class="second-row"><div class="time"><div class="take-off col-sm-4"><div class="icon"><i class="fa fa-user"></i></div><div><span class="skin-color">AUTHOR</span><br>'+key[i].bkAuthor+'</div></div></div><div class="action"><a href="#" class="button btn-small full-width" style="color:#ffffff">Reserve</a></div></div></div></div></article>';
+			 $("#books_div").append(article);
+			 }
+		  }
+		});
+	
 $.ajax({
 	  url: "current_user",
 	  type: "GET",
@@ -46,7 +57,11 @@ $.ajax({
 		 $("#userName").html(username);
 	  }
 	});
+	
+
 });
+
+
 </script>
 
 <body class="skin-polaris">
@@ -192,58 +207,8 @@ $.ajax({
                 <div id="main">
                     <div class="row">                      
                         <div class="col-sm-8 col-md-9">                           
-                            <div class="flight-list listing-style3 flight">
-                                <article class="box">
-                                    <figure class="col-xs-3 col-sm-2">
-                                        <span><img width="94" height="90" alt=""  src="resources/images/gsw.png"></span>
-                                    </figure>
-                                    <div class="details col-xs-9 col-sm-10">
-                                        <div class="details-wrapper">
-                                            <div class="first-row">
-                                                <div>
-                                                    <h4 class="box-title">Indianapolis to Paris<small>Oneway flight</small></h4>
-                                                    <a class="button btn-mini stop">1 STOP</a>
-                                                    <div class="amenities">
-                                                        <i class="soap-icon-wifi circle"></i>
-                                                        <i class="soap-icon-entertainment circle"></i>
-                                                        <i class="soap-icon-fork circle"></i>
-                                                        <i class="soap-icon-suitcase circle"></i>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <span class="price"><small>AVG/PERSON</small>$620</span>
-                                                </div>
-                                            </div>
-                                            <div class="second-row">
-                                                <div class="time">
-                                                    <div class="take-off col-sm-4">
-                                                        <div class="icon"><i class="soap-icon-plane-right yellow-color"></i></div>
-                                                        <div>
-                                                            <span class="skin-color">Take off</span><br>Wed Nov 13, 2013 7:50 Am
-                                                        </div>
-                                                    </div>
-                                                    <div class="landing col-sm-4">
-                                                        <div class="icon"><i class="soap-icon-plane-right yellow-color"></i></div>
-                                                        <div>
-                                                            <span class="skin-color">landing</span><br>Wed Nov 13, 2013 9:20 am
-                                                        </div>
-                                                    </div>
-                                                    <div class="total-time col-sm-4">
-                                                        <div class="icon"><i class="soap-icon-clock yellow-color"></i></div>
-                                                        <div>
-                                                            <span class="skin-color">total time</span><br>13 Hour, 40 minutes
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="action">
-                                                    <a href="http://www.soaptheme.net/html/travelo/flight-detailed.html" class="button btn-small full-width" style="color:#ffffff">SELECT NOW</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                           
-                  
+                            <div id="books_div" class="flight-list listing-style3 flight">
+                               
                             </div>
                             <a class="button uppercase full-width btn-large" style="color:#ffffff">load more listings</a>
                         </div>
@@ -263,18 +228,7 @@ $.ajax({
 				</div>
 			</div>
 			
-		
-		
-		</div>
-		
-		<!--
-			STYLE SWITCHER
-			INFO -> Ideal for Demo purposes only. Please remove after complete setup
-		-->
- 
-	</div><!--Global-->
-
-	<!--COMBINED FILE-->
+	
 	
 
 

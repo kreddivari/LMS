@@ -1,12 +1,13 @@
 package com.zen.smi.service;
 
+import java.util.List;
+
 import com.zen.smi.bo.BookBO;
-import com.zen.smi.bo.UserBO;
 import com.zen.smi.exception.BusinessException;
-import com.zen.smi.exception.UserException;
 
 public interface BookService {
 
-	UserBO getbookByName(String name) throws BusinessException;	
-	String createbook(BookBO bookBOO) throws BusinessException;	
+	BookBO getbookByName(String name) throws BusinessException;	
+	String createbook(BookBO bookBO) throws BusinessException;
+	List<BookBO> getAllBooks() throws BusinessException;	
 }
