@@ -4,18 +4,25 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.PathParam;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zen.smi.bo.BookBO;
+import com.zen.smi.bo.UserBO;
+import com.zen.smi.bo.UsersBookBO;
 import com.zen.smi.exception.BusinessException;
 import com.zen.smi.service.BookService;
+import com.zen.smi.service.UserBookService;
 
 
 @Controller
@@ -28,6 +35,9 @@ public class BookController extends BaseController {
 	
 	@Autowired 
 	BookService bookService;
+	
+	@Autowired 
+	UserBookService userBookService;
 	
 	
 	
@@ -45,6 +55,28 @@ public class BookController extends BaseController {
 		}
 		return bookJson;
 	}
+	
+	@RequestMapping(value = "/reserve_book/{book_id}", method = RequestMethod.POST)
+	public @ResponseBody String reserveBook(@PathVariable("book_id") int book_id,HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String bookJson = null;
+		try {
+			String  user = SecurityContextHolder.getContext().getAuthentication().getName();
+			BookBO bookBO= new BookBO();
+			bookBO.setId(book_id);
+			UserBO userBO=new UserBO();
+			userBO.setUserName(user);
+			UsersBookBO usersBookBO = new UsersBookBO();
+			usersBookBO.setBook(bookBO);
+			usersBookBO.setUser(userBO);
+			bookJson=userBookService.createbook(usersBookBO);			
+		} catch (Throwable th) {
+			th.printStackTrace();
+			bookJson = handleOtherError(th);
+		}
+		return bookJson;
+	}
+
 	
 	@RequestMapping(value = "/all_books", method = RequestMethod.GET)
 	public @ResponseBody String getAllBooks(HttpServletRequest request,

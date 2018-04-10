@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BookService.java&apos; to &apos;smi-business/src/main/java/com.zen.smi.service&apos;&#x0D;&#x0A;- Original project: &apos;smi-business&apos;&#x0D;&#x0A;- Destination element: &apos;smi-business/src/main/java/com.zen.smi.service&apos;&#x0D;&#x0A;- Original element: &apos;com.zen.smi.service.BookService.java&apos;" description="Copy compilation unit" destination="/src\/main\/java&lt;com.zen.smi.service" element1="/src\/main\/java&lt;com.zen.smi.service{BookService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1523244416115" units="1" version="1.0"/>
+</session>

@@ -28,4 +28,9 @@ public class BooksDAOImpl extends BaseDAOImpl<Book, Serializable> implements Boo
 		List<Book> books=retrieveAll();
 		return books;
 	}
+
+	public Book getBookById(int bookId) throws GenericDAOException {
+		Book book=findById(bookId);
+		return book;
+	}
 }

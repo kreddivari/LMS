@@ -110,6 +110,10 @@ public class HomePageController extends BaseController {
     public String getRightBar() {
         return "profile";
     }
+	@RequestMapping("/admin")
+    public String getAdmin() {
+        return "admin";
+    }
 	
 	@RequestMapping("/signup")
     public String getDashboard() {
@@ -147,7 +151,10 @@ public class HomePageController extends BaseController {
     public String getFooterPage() {
         return "footer";
     }
-    
+    @RequestMapping("/admin_books")
+    public String getAdminBookPage() {
+        return "admin_books";
+    }
     @RequestMapping("/errbrowser")
     public String getBrowserErrorPage() {
         return "errbrowser";

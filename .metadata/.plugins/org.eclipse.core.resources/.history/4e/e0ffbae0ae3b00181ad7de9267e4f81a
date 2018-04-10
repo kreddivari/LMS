@@ -1,0 +1,51 @@
+package com.zen.smi.service.impl;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import com.zen.smi.bo.UsersBookBO;
+import com.zen.smi.dao.entities.Book;
+import com.zen.smi.dao.entities.Users;
+import com.zen.smi.dao.entities.UsersBooks;
+import com.zen.smi.dao.exception.GenericDAOException;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.service.UserBookService;
+
+public class UserBookServiceImpl extends BaseService implements UserBookService{
+
+	public String createbook(UsersBookBO usersBookBO) throws BusinessException {
+		String result=null;
+		try {
+			Date dt = new Date();
+			Users users = getUserDAO().getUserByUserName(usersBookBO.getUser().getUserName());
+			Book book=new Book();
+			book.setId(usersBookBO.getBook().getId());
+			book.setStatusFlag(1);
+			book.setUpdatedDate(dt);
+			getBooksDAO().createUser(book);
+			UsersBooks usersBook =new UsersBooks();
+			usersBook.setUsers(users);
+			usersBook.setBook(book);
+			usersBook.setBookedDate(dt);	
+			usersBook.setBookStatus(1);
+			Calendar c = Calendar.getInstance(); 
+			c.setTime(dt); 
+			c.add(Calendar.DATE, 3);
+			Date dtx = c.getTime();
+			usersBook.setExpiryDate(dtx);			
+			result=getUserBooksDAO().createUserBook(usersBook);
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result="FAILURE";
+		}
+		return result;
+	}
+
+	public List<UsersBookBO> getAllUserBooks() throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

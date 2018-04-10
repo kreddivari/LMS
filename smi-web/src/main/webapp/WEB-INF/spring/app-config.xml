@@ -15,6 +15,7 @@
    <bean id="fineService" class="com.zen.smi.service.impl.FineServiceImpl"/>
    <bean id="notificationService" class="com.zen.smi.service.impl.NotificationServiceImpl"/>
    <bean id="roomService" class="com.zen.smi.service.impl.RoomServiceImpl"/>
+    <bean id="userBookService" class="com.zen.smi.service.impl.UserBookServiceImpl"/>
        
    <bean id="rolesDAO" class="com.zen.smi.dao.impl.RolesDAOImpl"/>       
    <bean id="userDAO" class="com.zen.smi.dao.impl.UsersDAOImpl"/>
@@ -25,6 +26,7 @@
    <bean id="notificationDAO" class="com.zen.smi.dao.impl.NotificationDAOImpl"/>
    <bean id="roomDAO" class="com.zen.smi.dao.impl.RoomDAOImpl"/>  
    <bean id="categoryDAO" class="com.zen.smi.dao.impl.CategoryDAOImpl"/>
+   <bean id="userBooksDAO" class="com.zen.smi.dao.impl.UsersBooksDAOImpl"/>
 		
    
     <bean id="gson" class="com.google.gson.Gson"/>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.zen.smi.dao.BooksDAO;
 import com.zen.smi.dao.MessagesDAO;
 import com.zen.smi.dao.RolesDAO;
+import com.zen.smi.dao.UserBooksDAO;
 import com.zen.smi.dao.UsersDAO;
 import com.zen.smi.dao.UsersRolesDAO;
 
@@ -22,6 +23,8 @@ public class BaseService {
 	private RolesDAO rolesDAO;
 	@Autowired
 	private BooksDAO booksDAO;
+	@Autowired
+	private UserBooksDAO userBooksDAO;
 	
 	public UsersDAO getUserDAO() {
 		return userDAO;
@@ -72,6 +75,12 @@ public class BaseService {
 	public void setModelMapper(ModelMapper modelMapper) {
 		this.modelMapper = modelMapper;
 	}
-	
+	public UserBooksDAO getUserBooksDAO() {
+		return userBooksDAO;
+	}
+
+	public void setUserBooksDAO(UserBooksDAO userBooksDAO) {
+		this.userBooksDAO = userBooksDAO;
+	}
 
 }
