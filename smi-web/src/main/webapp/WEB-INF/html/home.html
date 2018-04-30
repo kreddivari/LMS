@@ -85,7 +85,7 @@ $.ajax({
 	  success: function(response){	
 		 var key= $.parseJSON(response);	
 		 for(var i=0;i<key.length;i++){			
-		 var article='<div id="notification'+key[i].id+'" class="dialog"><h2>'+key[i].ntName+'</h2><br/><h4>'+key[i].ntDesc+'</h4><br/><h4>'+key[i].ntText+'</h4><a id="'+key[i].id+'" onclick="updateNotification(this.id)" class="closebtn">X</a></div>';
+		 var article='<div id="notification'+key[i].id+'" class="dialog"><h2>'+key[i].ntName+'</h2><br/><h4>'+key[i].ntDesc+'</h4><br/><h4>'+key[i].ntText+'</h4><button id="'+key[i].id+'" onclick="updateNotification(this.id)" class="closebtn">X</button></div>';
 		 $("#notifications").append(article);
 		 }
 	  }
@@ -93,10 +93,11 @@ $.ajax({
 });
 </script>
 <script>
-function updateNotification(id){	
+function updateNotification(id){
+	alert(id);
 	$.ajax({
 		  url: "notifications/"+id+"",
-		  type: "GET",		 
+		  type: "POST",		 
 		  success: function(response){	
 			 var key= $.parseJSON(response);	
 			 if(key=="SUCCESS"){
