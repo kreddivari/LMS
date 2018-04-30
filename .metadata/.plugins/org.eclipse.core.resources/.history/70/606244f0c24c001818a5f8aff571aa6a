@@ -361,7 +361,15 @@ function updateProfile(){
       </section>
       <section>
         
-       
+        <ul class="input-list style-1 clearfix">
+          <li style="float:left;margin-left:100px;">
+           <label>MOBILE</label>
+          </li>
+          <li>
+            <input type="text" id="mobile" value="" placeholder=":focus" class="focus">
+           
+          </li>
+        </ul>
       </section>
      
 					<button class="button" style="float:left;margin-left:30px;" id="editProfile" onclick="editProfile();">Edit</button>

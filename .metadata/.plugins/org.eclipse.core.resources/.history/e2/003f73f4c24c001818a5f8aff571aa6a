@@ -135,7 +135,8 @@ function updateProfile(){
 	
 	 var input_json = {           
 	     
-	            'userId'  :  $('#userId').val(),	          
+	            'userId'  :  $('#userId').val(),
+	            'mobile'  :  $('#mobile').val(),
 	            'password'  :  $('#password').val(),
 	            'firstName'  :  $('#firstName').val(),
 	            'lastName'  :  $('#lastName').val(),
@@ -214,7 +215,7 @@ function updateProfile(){
 			<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 487px;"><div id="u-left-menu" style="overflow: hidden; width: auto; height: 487px;">
 				<ul class="left-menu-wrapper list-unstyled">
 					<li class="left-menu-parent">
-						<a href="/lms/home">
+						<a href="/lms/admin">
 							<span class="left-menu-link-icon">
 								<i class="fa fa-home"></i>
 							</span>
@@ -237,7 +238,7 @@ function updateProfile(){
 						</a>
 					</li>
 					<li class="left-menu-parent ">
-						<a href="/lms/books">
+						<a href="/lms/abooks">
 							<span class="left-menu-link-icon">
 								<i class="fa fas fa-book"></i>
 							</span>
@@ -250,7 +251,7 @@ function updateProfile(){
 					</li>
 					
 					<li class="left-menu-parent">
-						<a href="/lms/rooms">
+						<a href="/lms/arooms">
 							<span class="left-menu-link-icon">
 								<i class="fa fas fa-university"></i>
 							</span>
@@ -260,17 +261,7 @@ function updateProfile(){
 							</span>
 						</a>					
 					</li>
-					<li class="left-menu-parent">
-						<a href="/lms/history">
-							<span class="left-menu-link-icon">
-								<i class="fa fa-history"></i>
-							</span>
-							<span class="left-menu-link-info">
-								<span class="link-name">HISTORY</span>
-								<span class="link-state"><i class="fa fa-angle-right"></i></span>
-							</span>
-						</a>					
-					</li>
+					
 					
 					
 					</ul>
@@ -361,7 +352,15 @@ function updateProfile(){
       </section>
       <section>
         
-       
+        <ul class="input-list style-1 clearfix">
+          <li style="float:left;margin-left:100px;">
+           <label>MOBILE</label>
+          </li>
+          <li>
+            <input type="text" id="mobile" value="" placeholder=":focus" class="focus">
+           
+          </li>
+        </ul>
       </section>
      
 					<button class="button" style="float:left;margin-left:30px;" id="editProfile" onclick="editProfile();">Edit</button>
