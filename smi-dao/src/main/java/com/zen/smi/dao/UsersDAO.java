@@ -12,5 +12,6 @@ public interface UsersDAO extends BaseDAO<Users, Serializable> {
 	Users authenticate(String userName, String password) throws GenericDAOException;
 
 	void  createUser(Users user)throws GenericDAOException;
+	public  Users findById(int id) throws GenericDAOException;
 
 }

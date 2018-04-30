@@ -1,5 +1,6 @@
 package com.zen.smi.service.impl;
 
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import javax.crypto.SecretKey;
 import org.apache.log4j.Logger;
 
 import com.zen.smi.bo.UserBO;
+import com.zen.smi.dao.BaseDAO;
 import com.zen.smi.dao.entities.Roles;
 import com.zen.smi.dao.entities.Users;
 import com.zen.smi.dao.entities.UsersRoles;
@@ -141,5 +143,36 @@ public class UserServiceImpl extends BaseService implements UserService {
 		}
 		LOGGER.debug("Ends getUserByUserName....");		
 		return result;
+	}	
+	public String updateUser(UserBO userBO) throws BusinessException {
+
+		LOGGER.debug("Starts getUserByUserName....");
+		String result=null;
+		try {
+				
+			Users users=getUserDAO().findById(userBO.getUserId());
+			//users.setUserName(userBO.getUserName());
+			users.setEmail(userBO.getEmail());
+			users.setFirstName(userBO.getFirstName());
+			users.setLastName(userBO.getLastName());
+			users.setMobile(userBO.getMobile());
+			try {				
+				users.setPassword(encrypt(userBO.getPassword()));
+				System.out.println("encrypted password:################"+users.getPassword());
+			} catch (Exception e) {				
+			   throw new BusinessException(e);
+			}
+			getUserDAO().createUser(users);			
+			result= "success";
+		} catch (GenericDAOException e) {
+			result= "failed";
+            throw new BusinessException(e);			
+		}
+		LOGGER.debug("Ends getUserByUserName....");		
+		return result;
+	}
+	private BaseDAO<Users, Serializable> getUsersDAO() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }

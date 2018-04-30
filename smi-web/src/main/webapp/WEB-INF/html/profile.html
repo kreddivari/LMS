@@ -145,13 +145,13 @@ function updateProfile(){
 	
 	
 	$.ajax({
-		  url: "create_user",
+		  url: "update_user",
 		  type: "POST",
 		  data:JSON.stringify(input_json),
 		  contentType: "application/json",
 		  cache: false,
 		  success: function(response){
-			  alert("success");
+			  alert("Updated");
 			  $('#container :input').prop("disabled", true);
 				 $('#container :button').prop("disabled", false);
 		  }

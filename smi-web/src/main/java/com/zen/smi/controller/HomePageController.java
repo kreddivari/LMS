@@ -105,6 +105,20 @@ public class HomePageController extends BaseController {
 		}
 		return resultJson;
 	}
+	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
+	public @ResponseBody String updateUser(@RequestBody String userJson,HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String resultJson = null;
+		try {
+			
+			UserBO userBO= gson.fromJson(userJson, UserBO.class);
+			resultJson=	userService.updateUser(userBO);			
+		} catch (Throwable th) {
+			th.printStackTrace();
+			resultJson = handleOtherError(th);
+		}
+		return resultJson;
+	}
 	@RequestMapping(value = "/user_profile/{userName}", method = RequestMethod.GET)
 	public @ResponseBody String getUser(@PathVariable("userName") String userName,HttpServletRequest request,
 			HttpServletResponse response) throws BusinessException {

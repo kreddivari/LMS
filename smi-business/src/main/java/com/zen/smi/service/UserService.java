@@ -25,6 +25,8 @@ public interface UserService {
 	
 	
 	String createUser(UserBO userBO) throws BusinessException;
+
+	String updateUser(UserBO userBO)throws BusinessException;
 	
 	
 }

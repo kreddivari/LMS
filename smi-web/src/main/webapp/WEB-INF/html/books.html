@@ -101,9 +101,9 @@ function reserveBook(book_id){
 		  url: "reserve_book/"+book_id+"",
 		  type: "POST",		 
 		  success: function(response){	
+			alert("Book Reserved!");
+			$("#reserve"+book_id).hide();
 			
-			$("#reserve"+book_id).css({"background-color":"#838383"});
-			$("#reserve"+book_id).prop('onclick',null).off('click');
 		  }
 		});
 	return false;
@@ -112,15 +112,25 @@ function reserveBook(book_id){
 <script>
 
 $(document).ready(function(){
-	
+	var status_json='["Available","Admin Approval Pending","Approved","Returned"]';
+	var stsjson= $.parseJSON(status_json);
 	$.ajax({
 		  url: "all_books",
 		  type: "GET",		 
 		  success: function(response){	
 			 var key= $.parseJSON(response);	
 			 for(var i=0;i<key.length;i++){
-			 var article='<article id="article'+key[i].id+'" class="box" style="width:70%"><figure class="col-xs-3 col-sm-2"><span><img width="94" height="90" alt=""  src="resources/images/gsw.png"></span></figure><div class="details col-xs-9 col-sm-10"><div class="details-wrapper" style="width:auto"><div class="first-row"><div><h4 class="box-title">'+key[i].bkName+'</h4></div><div><span class="price"><small>STATUS</small>available</span></div> </div><div class="second-row"><div class="time"><div class="take-off col-sm-4"><div class="icon"><i class="fa fa-user"></i></div><div><span class="skin-color">AUTHOR</span><br>'+key[i].bkAuthor+'</div></div></div><div class="action"><a id="reserve'+key[i].id+'" href="#"  class="button btn-small full-width" style="color:#ffffff" onclick="return reserveBook('+key[i].id+');">Reserve</a></div></div></div></div></article>';
-			 $("#books_div").append(article);
+				 var status=key[i].statusFlag;
+				// alert(status);
+				 var article="";
+				 if(status=="0"){
+					  article='<article id="article'+key[i].id+'" class="box" style="width:70%"><figure class="col-xs-3 col-sm-2"><span><img width="94" height="90" alt=""  src="resources/images/gsw.png"></span></figure><div class="details col-xs-9 col-sm-10"><div class="details-wrapper" style="width:auto"><div class="first-row"><div><h4 class="box-title">'+key[i].bkName+'</h4></div><div><span class="price"><small>STATUS</small>available</span></div> </div><div class="second-row"><div class="time"><div class="take-off col-sm-4"><div class="icon"><i class="fa fa-user"></i></div><div><span class="skin-color">AUTHOR</span><br>'+key[i].bkAuthor+'</div></div></div><div class="action"><a id="reserve'+key[i].id+'" href="#"  class="button btn-small full-width" style="color:#ffffff" onclick="return reserveBook('+key[i].id+');">Reserve</a></div></div></div></div></article>';
+						
+				 }else{
+					  article='<article id="article'+key[i].id+'" class="box" style="width:70%"><figure class="col-xs-3 col-sm-2"><span><img width="94" height="90" alt=""  src="resources/images/gsw.png"></span></figure><div class="details col-xs-9 col-sm-10"><div class="details-wrapper" style="width:auto"><div class="first-row"><div><h4 class="box-title">'+key[i].bkName+'</h4></div><div><span class="price"><small>STATUS</small>'+stsjson[status]+'</span></div> </div><div class="second-row"><div class="time"><div class="take-off col-sm-4"><div class="icon"><i class="fa fa-user"></i></div><div><span class="skin-color">AUTHOR</span><br>'+key[i].bkAuthor+'</div></div></div><div class="action"></div></div></div></div></article>';
+						
+				 }
+			  $("#books_div").append(article);
 			 }
 		  }
 		});
@@ -321,15 +331,7 @@ $('.dk_container').first().focus();
 								<option value="2017">2017</option>
 								<option value="2018">2018</option>								
 							</select> 					
-					</td><td width="40"></td><td>
-					       <select name="status" id="status" onchange="searchBook();"  tabindex="2">
-								  <option value="0">Status</option>
-								  <option value="0">Available</option>
-								  <option value="1">Approve-Pending</option>
-								  <option value="2">Approved</option>
-								  <option value="3">Reserved</option>
-							</select> 					
-					</td></tr><tr>
+					</td><td width="40"></td>/tr><tr>
 					<td>
 					       <select name="category" id="category" onchange="searchBookByCategory(this.value);"  tabindex="3">
 								  <option value="0">Category</option>

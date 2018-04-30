@@ -41,10 +41,11 @@ public class UsersDAOImpl extends BaseDAOImpl<Users, Serializable> implements Us
 		Users user = dao.getUserByUserName("john.doe");
 		System.out.println("First Name : "+user.getFirstName());
 	}
-	public  void createUser(Users user) throws GenericDAOException {
-		
-		saveOrUpdate(user);
-		
+	public  void createUser(Users user) throws GenericDAOException {		
+		saveOrUpdate(user);		
 	}
-	
+	public  Users findById(int id) throws GenericDAOException {		
+		Users user=findById(id);
+		return user;		
+	}
 }
