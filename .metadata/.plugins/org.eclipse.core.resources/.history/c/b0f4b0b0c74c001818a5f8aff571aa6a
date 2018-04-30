@@ -487,8 +487,6 @@ function signupUser(){
 		  cache: false,
 		  success: function(response){
 		   alert("user created!");
-		   
-		   $(".btn_sign_up").hide();
 		  }
 		});
 
