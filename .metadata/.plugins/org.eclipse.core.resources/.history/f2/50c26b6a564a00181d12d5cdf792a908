@@ -1,0 +1,33 @@
+package com.zen.smi.service.impl;
+
+import java.util.List;
+
+import com.zen.smi.bo.CategoryBO;
+import com.zen.smi.dao.entities.Category;
+import com.zen.smi.dao.exception.GenericDAOException;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.service.CategoryService;
+
+public class CategoryServiceImpl extends BaseService implements CategoryService{	
+	
+	public void createCategory(CategoryBO category) throws BusinessException{
+		
+	}
+	public void updateCategory(CategoryBO category) throws BusinessException{
+		
+	}	
+	public List<CategoryBO> getAllCategories() throws BusinessException{
+		try {
+			List<CategoryBO> categoriesBO = new ArrayList<CategoryBO>();
+			List<Category> categories=getCategoryDAO().getAllCategories();
+			for(Category category:categories){
+				CategoryBO bo=new CategoryBO();
+				
+			}
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;		
+	}
+}

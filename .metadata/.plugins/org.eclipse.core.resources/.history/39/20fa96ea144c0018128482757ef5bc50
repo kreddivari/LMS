@@ -1,0 +1,86 @@
+package com.zen.smi.service.impl;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.zen.smi.bo.RoomBO;
+import com.zen.smi.dao.entities.Notification;
+import com.zen.smi.dao.entities.Room;
+import com.zen.smi.dao.entities.UserNotification;
+import com.zen.smi.dao.entities.UserRoom;
+import com.zen.smi.dao.entities.Users;
+import com.zen.smi.dao.exception.GenericDAOException;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.service.RoomService;
+
+public class RoomServiceImpl extends BaseService implements RoomService {
+
+	public void addRoom(RoomBO room) throws BusinessException{
+		
+	}
+	public void updateRoom(RoomBO room) throws BusinessException{
+		
+	}	
+	public List<RoomBO> getAllRooms() throws BusinessException{
+		List<RoomBO> roomsBO=new ArrayList<RoomBO>();
+		try {
+			List<Room> rooms=  getRoomDAO().retrieveAll();
+			for(Room room:rooms){
+				RoomBO roomBO=new RoomBO();
+				roomBO.setId(room.getId());
+				roomBO.setRoomName(room.getRoomName());
+				roomBO.setStatus(room.getStatus());
+				roomBO.setRoomNum(room.getRoomNum());
+				roomsBO.add(roomBO);
+			}
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return roomsBO;
+	}
+   public void reserveRoom(String user_name,RoomBO roomBO) throws BusinessException{
+	   try {
+		Users users = getUserDAO().getUserByUserName(user_name);
+		UserRoom userRoom=new UserRoom();
+		userRoom.setUsers(users);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:MM");
+		try {
+			Date reserve_date = sdf.parse(roomBO.getReserveTime());
+			Date leave_date=sdf.parse(roomBO.getLeaveTime());
+			userRoom.setReserveTime(reserve_date);
+			userRoom.setLeaveTime(leave_date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 		
+		Room room=new Room();
+		room.setId(roomBO.getId());	
+		room.setStatus(1);
+		userRoom.setRoom(room);
+		String result=getUserRoomDAO().addUserRoom(userRoom);
+		if(result.equals("SUCCESS")){
+			Notification notification=new Notification();
+			//notification.setId(usersBook.getBookStatus());	
+			notification.setNtDesc("Notification on Room:#"+room.getId());
+			notification.setNtName("Status update notification");
+			notification.setNtText("Reservation of Room:"+room.getRoomNum()+" "+"on Date"+new Date()+" "+"is submitted for Admin Approval");
+			int notification_id=getNotificationDAO().createNotification(notification);
+			notification.setId(notification_id);
+			UserNotification userNotification = new UserNotification();
+			userNotification.setUsers(users);
+			userNotification.setNotification(notification);		
+			userNotification.setStatus("UNREAD");				
+			getUserNotificationDAO().createUserNotification(userNotification);
+		}
+	} catch (GenericDAOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+	}
+	
+}

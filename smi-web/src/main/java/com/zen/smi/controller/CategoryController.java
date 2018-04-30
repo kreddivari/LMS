@@ -41,8 +41,8 @@ public class CategoryController extends BaseController {
 		return Json;
 	}
 	
-	@RequestMapping(value = "/create_all", method = RequestMethod.GET)
-	public @ResponseBody String getAll(@RequestBody String userJson,HttpServletRequest request,
+	@RequestMapping(value = "/category_all", method = RequestMethod.GET)
+	public @ResponseBody String getAll(HttpServletRequest request,
 			HttpServletResponse response) throws BusinessException {
 		String Json = "SUCCESS";
 		try {	

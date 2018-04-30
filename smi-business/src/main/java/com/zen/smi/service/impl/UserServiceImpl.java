@@ -1,13 +1,17 @@
 package com.zen.smi.service.impl;
 
+import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+
 import org.apache.log4j.Logger;
+
 import com.zen.smi.bo.UserBO;
 import com.zen.smi.dao.entities.Roles;
 import com.zen.smi.dao.entities.Users;
@@ -53,6 +57,28 @@ public class UserServiceImpl extends BaseService implements UserService {
 		LOGGER.debug("Ends getUserByUserName....");		
 		return userBO;
 	}
+	   private String encrypt(String password) {
+	    	 String encryptedPasswd = null;
+	    	 try {
+	             MessageDigest md = MessageDigest.getInstance("MD5");
+	             md.update(password.getBytes()); 
+	          	 byte[] output = md.digest();
+	          	encryptedPasswd = bytesToHex(output);
+	          } catch (Exception e) {
+	             e.printStackTrace();
+	          }
+	    	 return encryptedPasswd;
+	    }
+	    private String bytesToHex(byte[] b) {
+	        char hexDigit[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+	                           '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+	        StringBuffer buf = new StringBuffer();
+	        for (int j=0; j<b.length; j++) {
+	           buf.append(hexDigit[(b[j] >> 4) & 0x0f]);
+	           buf.append(hexDigit[b[j] & 0x0f]);
+	        }
+	        return buf.toString();
+	     }
 	
     public UserBO authenticate(String userName, String password) throws UserException {
 		
@@ -80,25 +106,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 		LOGGER.debug("Ends authenticate....");		
 		return userBO;
 	}
-    
-    
-    public static String encrypt(String plainText, SecretKey secretKey,Cipher cipher) throws Exception {
-		byte[] plainTextByte = plainText.getBytes();
-		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-		byte[] encryptedByte = cipher.doFinal(plainTextByte);
-		Base64.Encoder encoder = Base64.getEncoder();
-		String encryptedText = encoder.encodeToString(encryptedByte);
-		return encryptedText;
-	}
-
-	public static String decrypt(String encryptedText, SecretKey secretKey,Cipher cipher) throws Exception {
-		Base64.Decoder decoder = Base64.getDecoder();
-		byte[] encryptedTextByte = decoder.decode(encryptedText);
-		cipher.init(Cipher.DECRYPT_MODE, secretKey);
-		byte[] decryptedByte = cipher.doFinal(encryptedTextByte);
-		String decryptedText = new String(decryptedByte);
-		return decryptedText;
-	}
+   
 	public String createUser(UserBO userBO) throws BusinessException {
 
 		LOGGER.debug("Starts getUserByUserName....");
@@ -114,11 +122,8 @@ public class UserServiceImpl extends BaseService implements UserService {
 			users.setLastName(userBO.getLastName());
 			users.setMobile(userBO.getMobile());
 			try {
-				KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-				keyGenerator.init(128);
-				SecretKey secretKey = keyGenerator.generateKey();
-				Cipher cipher = Cipher.getInstance("AES");
-				users.setPassword(userBO.getPassword());
+				
+				users.setPassword(encrypt(userBO.getPassword()));
 				System.out.println("encrypted password:################"+users.getPassword());
 			} catch (Exception e) {				
 			   throw new BusinessException(e);

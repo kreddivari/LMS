@@ -1,0 +1,70 @@
+package com.zen.smi.bo;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+public class RoomBO implements Serializable {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getRoomName() {
+		return roomName;
+	}
+
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
+	public int getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public List<UserRoomBO> getUserRooms() {
+		return userRooms;
+	}
+
+	public void setUserRooms(List<UserRoomBO> userRooms) {
+		this.userRooms = userRooms;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	
+	private int id;
+	private String roomName;
+	private int roomNum;
+	private int status;
+	private List<UserRoomBO> userRooms;
+	private String leaveTime;
+	private String reserveTime;
+
+	
+
+	public RoomBO() {
+	}
+	
+	
+
+}

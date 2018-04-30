@@ -9,6 +9,6 @@ import com.zen.smi.dao.exception.GenericDAOException;
 public interface UserBooksDAO extends BaseDAO<UsersBooks, Serializable> {
 
 	public String createUserBook(UsersBooks usersBooks) throws GenericDAOException;	
-	public List<UsersBooks> getAllUsersBooks() throws GenericDAOException ;
+	public List<UsersBooks> getAllUsersBooksbyId(int id) throws GenericDAOException ;
 
 }

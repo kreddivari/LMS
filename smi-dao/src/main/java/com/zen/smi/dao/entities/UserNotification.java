@@ -23,6 +23,7 @@ public class UserNotification implements java.io.Serializable {
 
 	private Integer userNotificationId;
 	private Notification notification;
+	private String status;
 	private Users users;
 	private Date createdDate;
 	private Date updatedDate;
@@ -35,9 +36,10 @@ public class UserNotification implements java.io.Serializable {
 		this.users = users;
 	}
 
-	public UserNotification(Notification notification, Users users, Date createdDate, Date updatedDate) {
+	public UserNotification(Notification notification, Users users,String status, Date createdDate, Date updatedDate) {
 		this.notification = notification;
 		this.users = users;
+		this.status=status;
 		this.createdDate = createdDate;
 		this.updatedDate = updatedDate;
 	}
@@ -93,5 +95,12 @@ public class UserNotification implements java.io.Serializable {
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	@Column(name = "status", length = 55)
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

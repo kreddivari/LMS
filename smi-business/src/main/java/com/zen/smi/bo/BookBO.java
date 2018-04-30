@@ -11,14 +11,14 @@ import java.util.List;
  */
 
 public class BookBO implements Serializable {
-	private static final long serialVersionUID = 1L;
-
 	
+	private static final long serialVersionUID = 1L;	
 	private int id;	
 	private String bkAuthor;	
 	private String bkDesc;	 
-	private String bkName;		
+	private String bkName;
 	private int bkYear;	
+	private int ct_id;
 	private Date createdDate;	
 	private int statusFlag;	
 	private Date updatedDate;	
@@ -97,5 +97,11 @@ public class BookBO implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public int getCt_id() {
+		return ct_id;
+	}
+	public void setCt_id(int ct_id) {
+		this.ct_id = ct_id;
 	}
 }

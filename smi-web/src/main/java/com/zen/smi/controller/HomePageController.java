@@ -37,7 +37,14 @@ public class HomePageController extends BaseController {
     public String getIndexPage() {
         return "gsw";
     }
-
+	@RequestMapping("/rooms")
+    public String getRoomsPage() {
+        return "rooms";
+    }
+	@RequestMapping("/history")
+    public String getHistoryPage() {
+        return "history";
+    }
 	
 	@RequestMapping("/login")
     public String getLoginPage(HttpServletRequest request,

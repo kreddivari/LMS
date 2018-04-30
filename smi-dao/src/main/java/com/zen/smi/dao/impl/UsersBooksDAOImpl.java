@@ -20,19 +20,18 @@ public class UsersBooksDAOImpl extends BaseDAOImpl<UsersBooks, Serializable> imp
 	
 	public static void main(String[] args) throws Exception {
 		UsersBooksDAOImpl impl=new UsersBooksDAOImpl();
-		impl.getAllUsersBooks();
+		List<UsersBooks> user_books=impl.getAllUsersBooksbyId(2);
+		System.out.println(user_books);
 	}
-
-
 
 	public String createUserBook(UsersBooks usersBooks) throws GenericDAOException {
 		saveOrUpdate(usersBooks);	
 		return "SUCCESS";
 	}
 
-	public List<UsersBooks> getAllUsersBooks() throws GenericDAOException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UsersBooks> getAllUsersBooksbyId(int id) throws GenericDAOException {
+		List<UsersBooks> userBooks=load("from UsersBooks where users.userId="+id+"");
+		return userBooks;
 	}
 	
 	

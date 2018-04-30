@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>   
+<html lang="en">   
+<head>   
+<meta charset="utf-8">   
+<title>Example of Table with twitter bootstrap</title>   
+<meta name="description" content="Creating a table with Twitter Bootstrap. Learn how to use Twitter Bootstrap toolkit to create Tables with examples.">  
+<link href="resources/admin/css/bootstrap.css" rel="stylesheet" type="text/css"  media="screen">
+
+<link href="resources/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css"  media="screen">
+<link href="resources/admin/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"  media="screen">
+<link href="resources/admin/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"  media="screen">  
+<link href="resources/admin/css/docs.css" rel="stylesheet" type="text/css"  media="screen">
+    <link href="resources/admin/css/prettify.css" rel="stylesheet" type="text/css"  media="screen">
+ 
+<script src="resources/admin/js/bootstrap-modal.js"></script>
+<script src="resources/admin/js/bootstrap-button.js"></script>
+	<script type="text/javascript" src="resources/admin/js/widgets.js"></script>
+    <script src="resources/admin/js/jquery.js"></script>
+    <script src="resources/admin/js/prettify.js"></script>
+    <script src="resources/admin/js/bootstrap-transition.js"></script>
+    <script src="resources/admin/js/bootstrap-alert.js"></script>
+    <script src="resources/admin/js/bootstrap-modal.js"></script>
+    <script src="resources/admin/js/bootstrap-dropdown.js"></script>
+    <script src="resources/admin/js/bootstrap-scrollspy.js"></script>
+    <script src="resources/admin/js/bootstrap-tab.js"></script>
+    <script src="resources/admin/js/bootstrap-tooltip.js"></script>
+    <script src="resources/admin/js/bootstrap-popover.js"></script>
+    <script src="resources/admin/js/bootstrap-button.js"></script>
+    <script src="resources/admin/js/bootstrap-collapse.js"></script>
+    <script src="resources/admin/js/bootstrap-carousel.js"></script>
+    <script src="resources/admin/js/bootstrap-typeahead.js"></script>
+    <script src="resources/admin/js/bootstrap-affix.js"></script>
+    <script src="resources/admin/js/application.js"></script>
+<script>
+
+var rowCount = $('#tablebody tr').length;
+var rowId="";
+
+function deleteRow(thi){
+rowId=thi;
+return false;
+}
+
+function deleteTR() {
+ $('#tr'+rowId).remove();
+}
+
+
+function editRow(thi){
+rowId=thi;
+var rowN=$('#tr'+rowId).find('td');
+var rowNbkName=rowN[1];
+var rowNbkAuthor=rowN[2];
+var rowNbkYear=rowN[3];
+var rowNstatus=rowN[4];
+var editbkName=rowNbkName.innerHTML;
+var editbkAuthor=rowNbkAuthor.innerHTML;
+var editbkYear=rowNbkYear.innerHTML;
+var editstatus=rowNstatus.innerHTML;
+$('#bkName').val(editbkName);
+$('#bkAuthor').val(editbkAuthor);
+$('#bkYear').val(editbkYear);
+$('#status').val(editstatus);
+}
+
+
+
+function addEmployee(thi){
+var rowCount = $('#tablebody tr').length;
+rowCount=rowCount+1;
+var bkName=thi.form.bkName.value;
+alert(bkName);
+var bkAuthor=thi.form.bkAuthor.value;
+var bkYear=thi.form.bkYear.value;
+var status=1;
+bookJson = 	"{"+'"statusFlag":1,"bkName":"'
+		+ bkName + '","bkYear":"'
+		+ bkYear + '","bkAuthor":"'
+		+ bkAuthor + '"}';
+     $.ajax({  
+	       url: "create_book",
+	       type: "POST",
+	       contentType: "application/json",
+		   data:bookJson,
+	       accept: "application/json",
+	       success: function (data, textStatus, jqXHR) {
+		  alert(data);
+	    	   var response = jQuery.parseJSON(data);           	
+				$('#tablebody').append('<tr id="tr'+rowCount+'"><td id="id">'+id+'</td><td>'+bkName+'</td><td>'+bkAuthor+'</td><td>'+bkYear+'</td><td>'+status+'</td><td><div class="btn-group"><button type="button" id="'+rowCount+'" onclick="editRow(this.id)" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button><button type="button" id="'+rowCount+'" onclick="deleteRow(this.id);" class="btn btn-danger" data-toggle="modal" data-target="#modelAlert">Delete</button><div></td></tr>');
+			      	       },
+	       error: function (jqXHR, textStatus, errorThrown) {
+	       	$("#error").text(textStatus);
+	       	return false;
+	       }
+	   });
+
+
+return false;
+}
+
+</script>
+
+</head>  
+<body style=" background-clip: padding-box;background-color: #F9F9F9;">  
+<form>
+
+
+<!-- Modal -->
+
+<div class="container-fluid">
+    <div class="row">
+    <div class="span11">
+    <P style="margin-left:400px;color:#777777"><b>Books List</b></P>
+   
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th style="color:#3A87AD">ID</th>
+            <th style="color:#3A87AD">Book Name</th>
+            <th style="color:#3A87AD">Author</th>
+            <th style="color:#3A87AD">Year</th>           
+           	<th style="color:#3A87AD;width="16%">Status</th>
+        </tr>
+    </thead>
+    <tfoot>
+       <tr>
+            <th style="color:#3A87AD">ID</th>
+            <th style="color:#3A87AD">Book Name</th>
+            <th style="color:#3A87AD">Author</th>
+            <th style="color:#3A87AD">Year</th>           
+           	<th style="color:#3A87AD;width="16%">Status</th>
+        </tr>
+    </tfoot>
+	<tbody id="tablebody">
+       
+    </tbody>
+</table>
+     <div id="modelAlert" class="modal hide fade">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Confirmation</h3>
+    </div>
+    <div class="modal-body">
+    <p>Are you Sure want to Delete</p>
+	<input type="hidden" id="rowIndex" value=""/>
+    </div>
+    <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">No</a>
+    <button class="btn" data-dismiss="modal" onclick="deleteTR();" aria-hidden="true">Yes</a>
+    </div>
+    </div>
+<div id="myModal" class="modal hide fade" style="width:400px;"tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form name="modalForm" id="modalForm" class="form-horizontal">
+	
+	<div class="control-group" style="margin-left:50px;">
+    <label class="control-label" for="firstName">Book Name</label>
+    <div class="controls">
+    <input type="text" id="bkName" name="bkName" placeholder="First Name">
+    </div>
+    </div>
+	<div class="control-group" style="margin-left:50px;">
+    <label class="control-label" for="lastName">Author</label>
+    <div class="controls">
+    <input type="text" id="bkAuthor" name="bkAuthor" placeholder="Last Name">
+    </div>
+    </div>
+       <div class="control-group" style="margin-left:50px;">
+    <label class="control-label" for="inputIcon">Year</label>
+    <div class="controls">
+    <div class="input-prepend">
+    <span class="add-on"><i class="icon-envelope"></i></span>
+    <input class="span2" id="bkYear" name="bkYear" type="text">
+    </div>
+    </div>
+    </div>
+	<div class="control-group" style="margin-left:50px;">
+    <label class="control-label" for="contact">Status</label>
+    <div class="controls">
+    <input type="text" id="status" name="status" placeholder="status">
+    </div>
+    </div>
+   <div class="modal-footer">
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+<button class="btn btn-primary" data-dismiss="modal"  type="button" onclick="saveChanges(this.form);">Save changes</button>
+</div>
+    
+    </form>
+	</div>
+	
+</div>
+    
+    </div>
+	</div>
+    
+
+
+<div class="btn-group">
+<button type="button" class="btn btn-large btn-primary"  data-toggle="modal" data-target="#myModalAdd">Add Employee</button>
+</div>
+
+ <div id="myModalAdd" class="modal hide fade" style="width:500px;height:300px;" role="dialog"  aria-hidden="true">
+    <form name="addEmp"  style="margin-top:30px;" id="addEmp" class="form-horizontal">
+	<fieldset>
+	 
+	<div class="control-group">
+    <label class="control-label" for="fname">Book Name</label>
+    <div class="controls">
+   <input type="text" id="bkName" rel="popover" data-content="Enter your first  name." data-original-title="First Name" name="firstName">
+    </div>
+    </div>
+	<div class="control-group" >
+    <label class="control-label" for="lastName">Author</label>
+    <div class="controls">
+    <input type="text" id="bkAuthor" rel="popover" data-content="Enter your lastt name." data-original-title="Last Name" placeholder="Last Name">
+    </div>
+    </div>
+     <div class="control-group">
+    <label class="control-label" for="inputIcon">Year</label>
+    <div class="controls">
+    <div class="input-prepend">
+    <span class="add-on"><i class="icon-envelope"></i></span>
+    <input class="span2" rel="popover" data-content="Enter your email address" id="bkYear" type="text">
+    </div>
+    </div>
+    </div>
+	<div class="control-group">
+    <label class="control-label" for="contact">Status</label>
+    <div class="controls">
+    <input type="text" id="contact" placeholder="Phone Number">
+    </div>
+    </div>
+   <div class="modal-footer" style="margin-left:-300px;">
+<button  data-dismiss="modal" class="btn" type="submit" onclick="addEmployee(this);">Add</button>
+
+    </div>
+    </fieldset>
+</form>
+	</div>
+</form>
+</body>  
+</html> 

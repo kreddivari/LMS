@@ -1,0 +1,37 @@
+package com.zen.smi.service.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import com.zen.smi.bo.NotificationBO;
+import com.zen.smi.dao.entities.Notification;
+import com.zen.smi.dao.exception.GenericDAOException;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.service.NotificationService;
+
+public class NotificationServiceImpl extends BaseService implements NotificationService {
+
+	public int createNotification(NotificationBO notificationBO) throws BusinessException{
+		int id=0;
+		Notification notification=new Notification();
+		notification.setNtDesc(notificationBO.getNtDesc());
+		notification.setNtName(notificationBO.getNtName());
+		notification.setNtText(notificationBO.getNtText());
+		notification.setCreatedDate(new Date());
+		try {
+			 id=getNotificationDAO().createNotification(notification);
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+		
+	}
+	public void updateNotification(NotificationBO notification) throws BusinessException{
+		
+	}	
+	public List<NotificationBO> getAllNotifications() throws BusinessException{
+		return null;
+		
+	}
+}

@@ -13,8 +13,9 @@ public class NotificationDAOImpl extends BaseDAOImpl<Notification, Serializable>
 		super(Notification.class);
 	}
 	
-	public void createNotification(Notification notification) throws GenericDAOException {
-		saveOrUpdate(notification);
+	public int createNotification(Notification notification) throws GenericDAOException {
+		Notification nty=saveAndReturn(notification);
+		return nty.getId();
 	}
 	public void updateNotification(Notification notification) throws GenericDAOException {
 		saveOrUpdate(notification);
@@ -23,5 +24,12 @@ public class NotificationDAOImpl extends BaseDAOImpl<Notification, Serializable>
 	public List<Notification> getAllNotifications() throws GenericDAOException {
 		List<Notification> notifications=retrieveAll();
 		return notifications;
+	}
+	public static void main(String[] args) throws Exception {
+		NotificationDAOImpl impl=new NotificationDAOImpl();
+		Notification notification=new Notification();
+		notification.setNtName("test");
+		int id=impl.createNotification(notification);
+		System.out.println(id);
 	}
 }

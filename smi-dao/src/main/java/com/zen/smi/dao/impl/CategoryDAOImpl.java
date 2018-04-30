@@ -29,4 +29,9 @@ public class CategoryDAOImpl extends BaseDAOImpl<Category, Serializable> impleme
 		List<Category> categories=retrieveAll();
 		return categories;
 	}
+
+	public Category getCategoryById(int id) throws GenericDAOException {
+		Category category=findById(id);
+		return category;
+	}
 }

@@ -1,21 +1,74 @@
 package com.zen.smi.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.zen.smi.bo.NotificationBO;
+import com.zen.smi.dao.entities.Notification;
+import com.zen.smi.dao.entities.UserNotification;
+import com.zen.smi.dao.entities.Users;
+import com.zen.smi.dao.exception.GenericDAOException;
 import com.zen.smi.exception.BusinessException;
 import com.zen.smi.service.NotificationService;
 
-public class NotificationServiceImpl implements NotificationService {
+public class NotificationServiceImpl extends BaseService implements NotificationService {
 
-	public void createNotification(NotificationBO notification) throws BusinessException{
+	public int createNotification(NotificationBO notificationBO) throws BusinessException{
+		int id=0;
+		Notification notification=new Notification();
+		notification.setNtDesc(notificationBO.getNtDesc());
+		notification.setNtName(notificationBO.getNtName());
+		notification.setNtText(notificationBO.getNtText());
+		notification.setCreatedDate(new Date());
+		try {
+			 id=getNotificationDAO().createNotification(notification);
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
 		
 	}
 	public void updateNotification(NotificationBO notification) throws BusinessException{
 		
 	}	
-	public List<NotificationBO> getAllNotifications() throws BusinessException{
-		return null;
+	public List<NotificationBO> getAllNotifications(String name) throws BusinessException{
+		List<NotificationBO> notificationsBOs=new ArrayList<NotificationBO>();
+		Users users=null;
+		
+		try {
+			users = getUserDAO().getUserByUserName(name);
+			List<UserNotification> userNotifications=getUserNotificationDAO().getNotificationsById(users.getUserId());
+			for(UserNotification userNotification:userNotifications){
+				if(userNotification.getStatus().equals("UNREAD")){
+				NotificationBO bo=new NotificationBO();
+				bo.setId(userNotification.getNotification().getId());
+				bo.setNtDesc(userNotification.getNotification().getNtDesc());
+				bo.setNtName(userNotification.getNotification().getNtName());
+				bo.setNtText(userNotification.getNotification().getNtText());
+				notificationsBOs.add(bo);
+				}
+			}
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return notificationsBOs;
 		
 	}
+	
+   public String  updateUserNotification(int notification_id) throws BusinessException{
+	   String result="SUCCESS";
+	   try {
+		UserNotification userNotification=getUserNotificationDAO().getUserNotificationsByNotificationId(notification_id);
+		userNotification.setStatus("READ");
+		getUserNotificationDAO().createUserNotification(userNotification);
+	   } catch (GenericDAOException e) {
+		   result="FAILURE";
+		e.printStackTrace();
+	}
+	return result;
+	}
+	
 }

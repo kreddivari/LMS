@@ -1,0 +1,39 @@
+package com.zen.smi.dao.impl;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.SimpleExpression;
+
+import com.zen.smi.dao.BooksDAO;
+import com.zen.smi.dao.UserBooksDAO;
+import com.zen.smi.dao.entities.Book;
+import com.zen.smi.dao.entities.UsersBooks;
+import com.zen.smi.dao.exception.GenericDAOException;
+
+public class UsersBooksDAOImpl extends BaseDAOImpl<UsersBooks, Serializable> implements UserBooksDAO {
+
+	public UsersBooksDAOImpl() {
+		super(UsersBooks.class);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		UsersBooksDAOImpl impl=new UsersBooksDAOImpl();
+		impl.getAllUsersBooks();
+	}
+
+
+
+	public String createUserBook(UsersBooks usersBooks) throws GenericDAOException {
+		saveOrUpdate(usersBooks);	
+		return "SUCCESS";
+	}
+
+	public List<UsersBooks> getAllUsersBooks() throws GenericDAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

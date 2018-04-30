@@ -1,0 +1,37 @@
+package com.zen.smi.dao.impl;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.zen.smi.dao.CategoryDAO;
+import com.zen.smi.dao.entities.Category;
+import com.zen.smi.dao.exception.GenericDAOException;
+
+public class BookCategoryDAOImpl extends BaseDAOImpl<BookCategory, Serializable> implements BookCategoryDAO {
+
+	public BookCategoryDAOImpl() {
+		super(BookCategory.class);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		BookCategoryDAOImpl impl=new BookCategoryDAOImpl();
+		impl.getAllCategories();
+	}
+	
+	public void createCategory(Category category) throws GenericDAOException {
+		saveOrUpdate(category);
+	}
+	public void updateCategory(Category category) throws GenericDAOException {
+		saveOrUpdate(category);
+	}
+	
+	public List<Category> getAllCategories() throws GenericDAOException {
+		List<Category> categories=retrieveAll();
+		return categories;
+	}
+
+	public Category getCategoryById(int id) throws GenericDAOException {
+		Category category=findById(id);
+		return category;
+	}
+}

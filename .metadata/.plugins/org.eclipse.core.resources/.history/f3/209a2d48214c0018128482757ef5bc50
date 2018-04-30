@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://www.gsw.edu/ -->
+<html class="js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths supports csstransforms3d csstransformspreserve3d js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths wf-roboto-n4-active wf-roboto-n3-active wf-active" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" style="" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+        
+
+     <head>
+        <link rel="stylesheet" href="resources/gsw/system.css" type="text/css">
+        <link rel="stylesheet" href="resources/gsw/general.css" type="text/css">
+        <link rel="stylesheet" href="resources/gsw/foundation" type="text/css">
+      	<link rel="stylesheet" href="resources/gsw/GSWHomeStyles" type="text/css">
+      	<link rel="stylesheet" href="resources/gsw/GSWSiteWideStyles" type="text/css">
+        <link rel="stylesheet" href="resources/gsw/specialpages.css" type="text/css">
+        <link rel="stylesheet" href="resources/gsw/GSW_Affordability.css" type="text/css">
+        <link rel="stylesheet" href="resources/gsw/font-awesome" type="text/css">        
+        <link rel="stylesheet" href="resources/gsw/font-awesome" type="text/css">
+		
+    
+	
+        <style>
+		/* ------------------------------------ Click on login and Sign Up to  changue and view the effect
+---------------------------------------
+*/
+
+* {
+  margin: 0px auto;
+  padding: 0px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+.cont_form_login > input {
+    padding: 15px 5px;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 260px;
+    border: none;
+    text-align: left;
+    color: #757575;
+}
+
+.cotn_principal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,607d8b+100,b0bec5+100 */
+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b0bec5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+
+.cont_centrar {
+  position: relative;
+  float: left;
+   width: 100%;
+}
+
+.cont_login {
+  position: relative;
+  width: 640px;
+left: 50%;
+margin-top:100px;
+margin-left: -320px;
+  
+}
+
+.cont_back_info {  
+position: relative;
+  float: left;
+  width: 640px;
+  height: 280px;
+overflow: hidden;
+  background-color: #ffffff;
+  margin-top: 100px;
+box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+.cont_forms {
+  position: absolute;
+  overflow: hidden;
+  top:100px;
+left: 0px;
+  width: 320px;
+  height: 280px;
+  background-color: #eee;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+
+.cont_forms_active_login {
+box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
+  height: 420px;  
+top:20px;
+left: 0px;
+  -webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+
+}
+
+.cont_forms_active_sign_up {
+box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
+  height: 420px;  
+top:20px;
+left:320px;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+
+.cont_img_back_grey {
+  position: absolute;
+  width: 950px;
+top:-80px;
+  left: -116px;
+}
+
+.cont_img_back_grey > img {
+  width: 100%;
+ 
+animation-name: animar_fondo;
+  animation-duration: 20s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+
+}
+
+.cont_img_back_ {
+  position: absolute;
+  width: 950px;
+top:-80px;
+  left: -116px;
+}
+
+.cont_img_back_ > img {
+  width: 100%;
+
+animation-name: animar_fondo;
+animation-duration: 20s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+}
+
+.cont_forms_active_login > .cont_img_back_ {
+top:0px;  
+  -webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+
+.cont_forms_active_sign_up > .cont_img_back_ {
+top:0px;  
+left: -435px;
+  -webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+ 
+
+.cont_info_log_sign_up {
+position: absolute;
+  width: 640px;
+  height: 280px;
+  top: 100px;
+z-index: 1;
+} 
+
+.col_md_login {
+  position: relative;
+  float: left;
+  width: 50%;
+}
+
+.col_md_login > h2 {
+  font-weight: 400;
+margin-top: 70px;
+    color: #757575;
+}
+
+.col_md_login > p {
+ font-weight: 400;
+margin-top: 15px;
+width: 80%;
+    color: #37474F;
+}
+
+.btn_login { 
+background-color: #26C6DA;
+  border: none;
+  padding: 10px;
+width: 200px;
+border-radius:3px;
+box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  color: #ffffff;
+margin-top: 10px;
+cursor: pointer;
+}
+
+.col_md_sign_up {
+  position: relative;
+  float: left;
+  width: 50%;  
+}
+
+.cont_ba_opcitiy > h2 {
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.cont_ba_opcitiy > p {
+ font-weight: 400;
+margin-top: 15px;
+ color: #ffffff;
+}
+/* ----------------------------------
+background text    
+------------------------------------
+ */
+.cont_ba_opcitiy {
+  position: relative;
+  background-color: rgba(120, 144, 156, 0.55);
+  width: 80%;
+  border-radius:3px ;
+margin-top: 60px;
+padding: 15px 0px;
+}
+
+.btn_sign_up { 
+background-color: #ef5350;
+  border: none;
+  padding: 10px;
+width: 200px;
+border-radius:3px;
+box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
+  color: #ffffff;
+margin-top: 10px;
+cursor: pointer;
+}
+.cont_forms_active_sign_up {
+z-index: 2;  
+}
+
+
+@-webkit-keyframes animar_fondo {
+  from { -webkit-transform: scale(1) translate(0px);
+-moz-transform: scale(1) translate(0px);
+-ms-transform: scale(1) translate(0px);
+-o-transform: scale(1) translate(0px);
+transform: scale(1) translate(0px); }
+  to { -webkit-transform: scale(1.5) translate(50px);
+-moz-transform: scale(1.5) translate(50px);
+-ms-transform: scale(1.5) translate(50px);
+-o-transform: scale(1.5) translate(50px);
+transform: scale(1.5) translate(50px); }
+}
+@-o-keyframes identifier {
+  from { -webkit-transform: scale(1);
+-moz-transform: scale(1);
+-ms-transform: scale(1);
+-o-transform: scale(1);
+transform: scale(1); }
+  to { -webkit-transform: scale(1.5);
+-moz-transform: scale(1.5);
+-ms-transform: scale(1.5);
+-o-transform: scale(1.5);
+transform: scale(1.5); }
+
+}
+@-moz-keyframes identifier {
+  from { -webkit-transform: scale(1);
+-moz-transform: scale(1);
+-ms-transform: scale(1);
+-o-transform: scale(1);
+transform: scale(1); }
+  to { -webkit-transform: scale(1.5);
+-moz-transform: scale(1.5);
+-ms-transform: scale(1.5);
+-o-transform: scale(1.5);
+transform: scale(1.5); }
+
+}
+@keyframes identifier {
+  from { -webkit-transform: scale(1);
+-moz-transform: scale(1);
+-ms-transform: scale(1);
+-o-transform: scale(1);
+transform: scale(1); }
+  to { -webkit-transform: scale(1.5);
+-moz-transform: scale(1.5);
+-ms-transform: scale(1.5);
+-o-transform: scale(1.5);
+transform: scale(1.5); }
+}
+.cont_form_login {
+  position: absolute;
+  opacity: 0;
+display: none;
+  width: 320px;
+  -webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+
+.cont_forms_active_login {
+z-index: 2;  
+}
+.cont_forms_active_login  >.cont_form_login {
+}
+
+.cont_form_sign_up {
+  position: absolute;
+  width: 320px;
+float: left;
+  opacity: 0;
+display: none;
+  -webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+}
+
+  
+.cont_form_sign_up > input {
+text-align: left;
+  padding: 15px 5px;
+margin-left: 10px;
+margin-top: 20px;
+  width: 260px;
+border: none;
+    color: #757575;
+}
+
+.cont_form_sign_up > h2 {
+margin-top: 50px; 
+font-weight: 400;
+  color: #757575;
+}
+
+
+.cont_form_login > input {
+  padding: 15px 5px;
+margin-left: 10px;
+margin-top: 20px;
+  width: 260px;
+border: none;
+text-align: left;
+  color: #757575;
+}
+
+.cont_form_login > h2 {
+margin-top: 110px; 
+font-weight: 400;
+  color: #757575;
+}
+.cont_form_login > a,.cont_form_sign_up > a  {
+  color: #757575;
+    position: relative;
+    float: left;
+    margin: 10px;
+margin-left: 30px;
+}
+            @media print { 
+                #pageBody
+                { 
+                    display: none !important;
+                }
+                body::after
+                {
+                    content:"Sorry, this page cannot be printed.";
+                    color: #000000;
+                }
+            }
+        </style>
+    <link rel="stylesheet" type="text/css" href="resources/gsw/n2-ss-1.css" media="all">
+<style type="text/css">.n2-ss-spinner-simple-white-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -20px;
+    background: #ffffff;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+.n2-ss-spinner-simple-white {
+  outline: 1px solid RGBA(0,0,0,0);
+  width:100%;
+  height: 100%;
+}
+
+.n2-ss-spinner-simple-white:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -11px;
+    margin-left: -11px;
+}
+
+.n2-ss-spinner-simple-white:not(:required):before {
+    content: '';
+    border-radius: 50%;
+    border-top: 2px solid #333;
+    border-right: 2px solid transparent;
+    animation: n2SimpleWhite .6s linear infinite;
+    -webkit-animation: n2SimpleWhite .6s linear infinite;
+}
+@keyframes n2SimpleWhite {
+    to {transform: rotate(360deg);}
+}
+
+@-webkit-keyframes n2SimpleWhite {
+    to {-webkit-transform: rotate(360deg);}
+}</style>
+<style>
+	.ql_desktop {
+		display: block;
+	}
+
+	.ql_mobile {
+		display: none;
+	}
+
+	@media screen and (max-width: 640px) {
+		.ql_desktop {
+			display: none;
+		}
+
+		.ql_mobile {
+			display: block;
+		}
+
+		.quicklinks-btn {
+			width: 96%;
+		    height: 80%;
+		    padding: 0;
+		    font-size: 0.8em;
+		    background-color: #b28e2485;
+		}
+	}
+
+      @font-face { font-family: JuneBug; src: url('JUNEBUG.TTF'); } 
+      h1 {
+         font-family: JuneBug
+      }
+    </style>
+<link rel="stylesheet" href="resources/gsw/style.css" media="all"><script type="text/javascript" src="resources/gsw/nextend-webfontloader.min.js.download"></script>
+
+<script>
+function signupUser(){
+	
+	
+}
+</script>
+<script>
+
+
+function cambiar_login() {
+  document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";  
+document.querySelector('.cont_form_login').style.display = "block";
+document.querySelector('.cont_form_sign_up').style.opacity = "0";               
+
+setTimeout(function(){  document.querySelector('.cont_form_login').style.opacity = "1"; },400);  
+  
+setTimeout(function(){    
+document.querySelector('.cont_form_sign_up').style.display = "none";
+},200);  
+  }
+
+function cambiar_sign_up(at) {
+  document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_sign_up";
+  document.querySelector('.cont_form_sign_up').style.display = "block";
+document.querySelector('.cont_form_login').style.opacity = "0";
+  
+setTimeout(function(){  document.querySelector('.cont_form_sign_up').style.opacity = "1";
+},100);  
+
+setTimeout(function(){   document.querySelector('.cont_form_login').style.display = "none";
+},400);  
+
+
+}    
+
+
+
+function ocultar_login_sign_up() {
+
+document.querySelector('.cont_forms').className = "cont_forms";  
+document.querySelector('.cont_form_sign_up').style.opacity = "0";               
+document.querySelector('.cont_form_login').style.opacity = "0"; 
+
+setTimeout(function(){
+document.querySelector('.cont_form_sign_up').style.display = "none";
+document.querySelector('.cont_form_login').style.display = "none";
+},500);  
+  
+  }
+</script>  
+  </head>
+   
+   <body id="mainBody"   ><div class="sm-pusher">
+   <div class="sm-content">
+   <div class="sm-content-inner">
+        <div class="curtain-container" >
+            <div id="pageBody" style="width:100%">
+                <div class="off-canvas-wrap" data-offcanvas="">
+                    <div class="inner-wrap">
+                                  
+                       
+                      	
+                        <!--Main Navigation-->
+                        <div class="contain-to-grid secondBar">
+                            <nav class="top-bar" id="mainNav" data-topbar="">
+                                <ul class="title-area">
+                                    <li class="name">
+                                           </li>
+                                    <li class="toggle-topbar menu-icon">
+                                         </ul>
+                                
+                         </nav>
+                        </div>
+                      <div>
+                          
+
+<div class="custom">
+	<div><a href="https://www.gsw.edu/"><img src="resources/gsw/logo_blue_back.svg" class="logo img-responsive hide-for-small-only" alt="GSW Blue" id="topLogo"></a></div>
+<script type="text/javascript">// <![CDATA[
+function logoInit() {
+		window.addEventListener('scroll', function(e) {
+			var distanceY = window.scrollY,
+				shrinkOn = 60,
+				logo = document.getElementById("topLogo");
+			if (distanceY > shrinkOn) {
+				logo.classList.add("shrink");
+			} else {
+				if (logo.classList.contains("shrink")) {
+					logo.classList.remove("shrink");
+				}
+			}
+		});
+	}
+	window.onload = logoInit();
+// ]]></script></div>
+
+                      </div>
+                        <!--<aside class="right-off-canvas-menu communityLinks" id="communityLinks">
+                            
+                        </aside>-->
+                      <div class="navFiller">
+                        
+                      </div>
+                       <div id="emergencyArea">
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    
+                        
+                      	<div>                  
+                          
+
+<div class="custom">
+	<div class="small-screen-banner-buttons">
+    <div class="evenSpace">
+    </div>
+	
+	<div class="n2-ss-layer-row" style="padding:0.625em 0.625em 0.625em 0.625em ;background:RGBA(28,63,123,0.83);"><div class="n2-ss-layer n2-ow n2-ss-last-in-row" style="width: 100%; margin-right: 20px; margin-left: 20px; margin-top: 20px; overflow: visible; font-size: 100%;" data-csstextalign="inherit" data-desktopportraitmaxwidth="0" data-pm="default" data-desktopportraitpadding="10|*|10|*|10|*|10|*|px+" data-desktopportraitinneralign="inherit" data-desktopportraitorder="0" data-type="col" data-rotation="0" data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="0" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100" data-plugin="rendered" data-r="0"><div class="n2-ss-layer-col n2-ss-layer-content" style="padding:0.625em 0.625em 0.625em 0.625em ;" data-verticalalign="flex-start"><div class="n2-ss-layer n2-ow" style="margin: 0em; overflow: visible; font-size: 100%;" data-pm="normal" data-desktopportraitmargin="0|*|0|*|0|*|0|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="inherit" data-desktopportraitselfalign="inherit" data-type="layer" data-rotation="0" data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="0" data-mobilelandscape="1" data-adaptivefont="0" data-desktopportraitfontsize="100" data-plugin="rendered"><div id="n2-ss-1item4" class="n2-font-9bb144dcdce3045b568b7d8f927f328f-hover n2-style-5db3eb698375544404f3cdafad9da567-heading   n2-ow" style="display:block;">Preview Day</div></div><div class="n2-ss-layer n2-ow" style="margin: 0em; overflow: visible; font-size: 16px;" data-pm="normal" data-desktopportraitmargin="0|*|0|*|0|*|0|*|px+" data-desktopportraitheight="0" data-desktopportraitmaxwidth="0" data-cssselfalign="inherit" data-desktopportraitselfalign="inherit" data-type="layer" data-rotation="0" data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1" data-mobileportrait="0" data-mobilelandscape="1" data-adaptivefont="1" data-desktopportraitfontsize="100" data-plugin="rendered"><div class="n2-ss-button-container n2-ow n2-font-1103-link  n2-ss-nowrap"><a class="n2-style-f542dbb1d8038bfd94a720fc4e87b4db-heading  n2-ow " href="/admissions/previewday"><span><span>Sign Up Now</span></span></a></div></div></div></div></div>
+    </div>
+</div>
+  
+ </div>
+                      
+<div>                  
+                            
+
+<div class="custom">
+	
+
+
+</div>
+                                 </div>
+                      	
+                        <div>
+                            
+
+	
+<div class="custom">
+
+	<div class="image-wrapper-stat">
+	
+	
+	<div id="login">
+	
+  <div class="cotn_principal">
+<div class="cont_centrar">
+
+  <div class="cont_login">
+<div class="cont_info_log_sign_up">
+      <div class="col_md_login">
+<div class="cont_ba_opcitiy">
+        
+        <h2>LOGIN</h2>  
+  <p>Please login with your GSW ID.</p> 
+  <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+  </div>
+  </div>
+<div class="col_md_sign_up">
+<div class="cont_ba_opcitiy">
+  <h2>SIGN UP</h2>
+
+  
+  <p>Sign Up with GSW credentials.</p>
+
+  <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+</div>
+  </div>
+       </div>
+
+    
+    <div class="cont_back_info">
+       <div class="cont_img_back_grey">
+       <img src="resources/images/gswi1.jpg" alt="" />
+       </div>
+       
+    </div>
+<div class="cont_forms" >
+    <div class="cont_img_back_">
+       <img src="resources/images/gswi.jpg" alt="" /> </div>
+       <form  action="j_spring_security_check" method="POST">
+ <div class="cont_form_login">
+ 
+ 
+<a href="#" onclick="ocultar_login_sign_up()" ></a>
+   <h2>LOGIN</h2>
+ <input type="text"  name="j_username" placeholder="User Name" />
+<input type="password" name="j_password"  placeholder="Password" />
+<button type="submit" class="btn_login" onclick="cambiar_login()">LOGIN</button>
+
+  </div>
+  </form>
+  
+   <div class="cont_form_sign_up">
+<a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+     <h2>SIGN UP</h2>
+<input type="text" id="email" placeholder="Email" />
+<input type="text" id="userName" placeholder="User Name" />
+<input type="password" id="password" placeholder="Password" />
+<input type="password" placeholder="Confirm Password" />
+<button class="btn_sign_up" onclick="signupUser()">SIGN UP</button>
+
+  </div>
+
+    </div>
+    
+  </div>
+ </div>
+</div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="img-overlay-stat" id="bottom-stat">
+		</div>
+</div></div>
+
+                        </div>
+                      	<div class="evenSpace">
+                      	</div>
+                       
+                      	<div>
+                           
+
+<div class="custom">
+	<div class="footerAreaWrapper" style="margin-top:300px;">
+	<div class="row" id="footerArea" data-equalizer="">
+		<div class="large-8 medium-8 columns" data-equalizer-watch="" style="height: 70px;">
+			 <h1 style="text-decoration: underline;
+  -webkit-text-decoration-color: red; 
+  text-decoration-color: #8a7712;
+margin-left:400px;color: #FFFFFF; font-family: 'cursive'; font-size: 35px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;">Library Management System</h1>
+		</div>
+		<div class="large-4 medium-4 columns socialIconsColumn" data-equalizer-watch="" style="height: 70px;">
+			<div class="footerSocialIcons">
+				
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+  
+                        </div>                          
+                      	</div>
+                      
+                        
+                        <a class="exit-off-canvas"></a>
+                        <!--<div id="back-top"><a class="backtotop" href="#"></a></div>-->
+                        <div id="searchModal" class="reveal-modal" data-reveal="">
+                            
+
+<div class="custom">
+
+
+	
+                </div>
+            </div>
+        <div class="revealed-footer">
+        </div>
+		
+    </div></div></div>
+    </div>
+</div>
+</div>
+</body></html>

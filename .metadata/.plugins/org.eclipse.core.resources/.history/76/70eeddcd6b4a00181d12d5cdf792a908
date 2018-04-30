@@ -1,0 +1,59 @@
+package com.zen.smi.dao.impl;
+
+import java.io.Serializable;
+import java.util.List;
+import com.zen.smi.dao.BooksDAO;
+import com.zen.smi.dao.entities.Book;
+import com.zen.smi.dao.exception.GenericDAOException;
+
+public class BooksDAOImpl extends BaseDAOImpl<Book, Serializable> implements BooksDAO {
+
+	public BooksDAOImpl() {
+		super(Book.class);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		BooksDAOImpl impl=new BooksDAOImpl();
+		Book book=new Book();
+		book.setBkAuthor("Morgan Kaufmann");
+		book.setBkYear(2012);
+		List<Book> books=impl.retrieveByValue(book);
+		System.out.println(books);
+	}
+	
+	public void createUser(Book book) throws GenericDAOException {
+		saveOrUpdate(book);
+	}
+	public void updateBook(Book book) throws GenericDAOException {
+		saveOrUpdate(book);
+	}
+	public void deleteBook(Book book) throws GenericDAOException {
+		delete(book);
+	}
+	public List<Book> getAllBooks() throws GenericDAOException {
+		List<Book> books=retrieveAll();
+		return books;
+	}
+	public List<Book> retrieveByValue(Book book) throws GenericDAOException {
+		List<Book> books=retrieveByParameter(book);
+		return books;
+	}
+	
+
+	public Book getBookById(int bookId) throws GenericDAOException {
+		Book book=findById(bookId);
+		return book;
+	}
+	
+	public int getBookByName(String name){
+		List<Object[]> books=loadWithsql(name);
+		Object[] book=books.get(0);
+		int id=(Integer) book[0];
+		return id;
+	}
+
+	public List<Book> getBooksByCategoryId(int bookId) throws GenericDAOException {
+		List<Book> books=retrieveByParameter(book);
+		return books;
+	}
+}

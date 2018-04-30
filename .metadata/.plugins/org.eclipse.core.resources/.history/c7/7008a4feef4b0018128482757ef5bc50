@@ -1,0 +1,16 @@
+package com.zen.smi.dao.impl;
+
+import java.io.Serializable;
+
+import com.zen.smi.dao.UserRoomDAO;
+import com.zen.smi.dao.entities.UserRoom;
+
+public class UserRoomDAOImpl extends BaseDAOImpl<UserRoom, Serializable> implements UserRoomDAO {
+
+	public UserRoomDAOImpl() {
+		super(UserRoom.class);
+	}
+	
+	
+	
+}

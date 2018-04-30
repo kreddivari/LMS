@@ -7,7 +7,8 @@ import com.zen.smi.dao.exception.GenericDAOException;
 
 public interface NotificationDAO extends BaseDAO<Notification, Serializable> {
 
-	public void createNotification(Notification notification) throws GenericDAOException ;
+	public int createNotification(Notification notification) throws GenericDAOException ;
 	public void updateNotification(Notification notification) throws GenericDAOException;	
 	public List<Notification> getAllNotifications() throws GenericDAOException ;
+	
 }

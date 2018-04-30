@@ -1,0 +1,87 @@
+package com.zen.smi.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.zen.smi.bo.BookBO;
+import com.zen.smi.bo.RoomBO;
+import com.zen.smi.bo.UserBO;
+import com.zen.smi.bo.UsersBookBO;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.service.RoomService;
+
+
+@Controller
+public class RoomController extends BaseController {
+	
+	/**
+	 * Logger for HomePageController class.
+	 */
+	private static final Logger LOGGER = Logger.getLogger(RoomController.class);
+	
+	@Autowired 
+	RoomService roomService;
+	
+	
+	
+	@RequestMapping(value = "/reserve_room/{room_id}", method = RequestMethod.POST)
+	public @ResponseBody String reserveRoom(@PathVariable("user_id") int room_id,HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String bookJson = null;
+		try {
+			String  user = SecurityContextHolder.getContext().getAuthentication().getName();
+			BookBO bookBO= new BookBO();
+			bookBO.setId(book_id);
+			UserBO userBO=new UserBO();
+			userBO.setUserName(user);
+			UsersBookBO usersBookBO = new UsersBookBO();
+			usersBookBO.setBook(bookBO);
+			usersBookBO.setUser(userBO);
+			bookJson=userBookService.createbook(usersBookBO);			
+		} catch (Throwable th) {
+			th.printStackTrace();
+			bookJson = handleOtherError(th);
+		}
+		return bookJson;
+	}
+	
+	@RequestMapping(value = "/reserve_room/{room_id}", method = RequestMethod.POST)
+	public @ResponseBody String addRoom(@RequestBody String userJson,HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String json = "SUCCESS";
+		try {			
+			RoomBO roomBO= gson.fromJson(json, RoomBO.class);
+			roomService.addRoom(roomBO);		
+		} catch (Throwable th) {
+			th.printStackTrace();
+			json = handleOtherError(th);
+		}
+		return json;
+	}
+	
+	@RequestMapping(value = "/all_rooms", method = RequestMethod.GET)
+	public @ResponseBody String getRooms(HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String json = "SUCCESS";
+		try {					
+			List<RoomBO> rooms=roomService.getAllRooms();	
+			json=gson.toJson(rooms);
+		} catch (Throwable th) {
+			th.printStackTrace();
+			json = handleOtherError(th);
+		}
+		return json;
+	}
+}

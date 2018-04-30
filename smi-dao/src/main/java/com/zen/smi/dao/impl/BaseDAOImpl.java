@@ -2,6 +2,7 @@ package com.zen.smi.dao.impl;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,13 +13,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.zen.smi.dao.BaseDAO;
+import com.zen.smi.dao.entities.Book;
 import com.zen.smi.dao.entities.Users;
 import com.zen.smi.dao.exception.GenericDAOException;
 import com.zen.smi.generic.utils.MessageUtil;
@@ -132,6 +137,35 @@ public class BaseDAOImpl<T,PK extends Serializable>  implements BaseDAO<T,PK>{
 
           return object;
       }
+    @SuppressWarnings("unchecked")
+  	public List<Book> retrieveByParameter(Book book) {
+    	List<Book> object = null;
+          Session session = getSessionFactory().openSession();
+          Transaction transaction = session.beginTransaction();
+          
+           try{
+        	   Criteria	criteria =  session.createCriteria(Book.class);
+        	   if(book.getBkAuthor()!=null  && !book.getBkAuthor().equals(""))
+        	   criteria.add(Restrictions.eq("bkAuthor", book.getBkAuthor()));
+        	   if(book.getBkYear()!=null && book.getBkYear()>0)
+        	   criteria.add(Restrictions.eq("bkYear", book.getBkYear()));
+        	   if(book.getBkName()!=null && !book.getBkName().equals(""))
+        	   criteria.add(Restrictions.eq("bkName", book.getBkName()));
+        	   criteria.add(Restrictions.eq("statusFlag", book.getStatusFlag()));        	   
+        	   object=criteria.list();
+        	   transaction.commit(); 
+           }
+    		catch(HibernateException ex){
+    			transaction.rollback();
+    			throw ex;
+              }
+           finally {
+               if(session!=null){
+                   session.close();
+               }
+           }          
+		return object;
+      }
 
     public void saveOrUpdate(T object) {
         Session session = null;
@@ -152,6 +186,30 @@ public class BaseDAOImpl<T,PK extends Serializable>  implements BaseDAO<T,PK>{
                 session.close();
             }
         }
+
+    }
+    public T saveAndReturn(T object) {
+    	T obj=null;
+        Session session = null;
+        try{
+        	session = getSessionFactory().openSession();
+        	Transaction transaction = session.beginTransaction();
+            session.saveOrUpdate(object);
+            obj=object;
+            transaction.commit();
+        }
+        catch (HibernateException ex){
+            if(session!=null && session.getTransaction()!=null){
+                session.getTransaction().rollback();
+            }
+            throw ex;
+        }
+        finally {
+            if(session!=null){
+                session.close();
+            }
+        }
+		return obj;
 
     }
     
@@ -328,9 +386,7 @@ public class BaseDAOImpl<T,PK extends Serializable>  implements BaseDAO<T,PK>{
  		try{
  			session = getSessionFactory().openSession();
 	        transaction = session.beginTransaction();
-            Query myQuery = session.createQuery(queryName);
-			
-
+            Query myQuery = session.createQuery(queryName);	
 			recordSet = myQuery.list();
 			transaction.commit();
         }
@@ -339,9 +395,7 @@ public class BaseDAOImpl<T,PK extends Serializable>  implements BaseDAO<T,PK>{
            throw ex;
        }
        finally {
-            if(session!=null){
-                session.close();
-            }
+           
         }
 
 		return recordSet;

@@ -1,0 +1,26 @@
+package com.zen.smi.dao.impl;
+
+import java.io.Serializable;
+
+import com.zen.smi.dao.UserNotificationDAO;
+import com.zen.smi.dao.entities.UserNotification;
+import com.zen.smi.dao.exception.GenericDAOException;
+
+public class UserNotificationDAOImpl extends BaseDAOImpl<UserNotification, Serializable> implements UserNotificationDAO {
+
+	public UserNotificationDAOImpl() {
+		super(UserNotification.class);
+	}
+
+	public void createUserNotification(UserNotification userNotification) throws GenericDAOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateUserNotification(UserNotification userNotification) throws GenericDAOException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

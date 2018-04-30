@@ -1,0 +1,13 @@
+package com.zen.smi.dao;
+
+import java.io.Serializable;
+import com.zen.smi.dao.entities.Notification;
+import com.zen.smi.dao.entities.UserNotification;
+import com.zen.smi.dao.exception.GenericDAOException;
+
+public interface UserNotificationDAO extends BaseDAO<Notification, Serializable> {
+
+	public void createUserNotification(UserNotification userNotification) throws GenericDAOException ;
+	public void updateUserNotification(UserNotification userNotification) throws GenericDAOException ;
+	
+}

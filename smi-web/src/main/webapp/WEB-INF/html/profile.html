@@ -133,9 +133,8 @@ function editProfile(){
 function updateProfile(){
 	
 	
-	 var input_json = {
-	           
-	            'userName'  :  $('#username').val(),
+	 var input_json = {           
+	     
 	            'userId'  :  $('#userId').val(),
 	            'mobile'  :  $('#mobile').val(),
 	            'password'  :  $('#password').val(),
@@ -250,17 +249,7 @@ function updateProfile(){
 						</a>
 					
 					</li>
-					<li class="left-menu-parent">
-						<a href="#">
-							<span class="left-menu-link-icon">
-								<i class="fa fas fa-money "></i>
-							</span>
-							<span class="left-menu-link-info">
-								<span class="link-name">FINES</span>
-								<span class="link-state"><i class="fa fa-angle-right"></i></span>
-							</span>
-						</a>					
-					</li>
+					
 					<li class="left-menu-parent">
 						<a href="#">
 							<span class="left-menu-link-icon">
@@ -317,8 +306,8 @@ function updateProfile(){
           </li>
           <li>
           <input type="hidden" id="userId" value=""/>
-            <input class="edit" type="text" id="username" value="" placeholder=":focus" class="focus">
-           
+          
+             <label id="username"></label>
           </li>
         </ul>
       </section>

@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="resources/gsw/GSW_Affordability.css" type="text/css">
         <link rel="stylesheet" href="resources/gsw/font-awesome" type="text/css">        
         <link rel="stylesheet" href="resources/gsw/font-awesome" type="text/css">
-		
+		 <script type="text/javascript" src="resources/scripts/jquery.min.js"></script>
     
 	
         <style>
@@ -465,6 +465,34 @@ margin-left: 30px;
       }
     </style>
 <link rel="stylesheet" href="resources/gsw/style.css" media="all"><script type="text/javascript" src="resources/gsw/nextend-webfontloader.min.js.download"></script>
+
+<script>
+function signupUser(){
+	alert();
+	 var input_json = {
+	           
+	            'userName'  :  $('#userName').val(),
+	            'password'  :  $('#password').val(),    	           
+	            'firstName'  :  $('#firstName').val(),
+	            'lastName'  :  $('#lastName').val(),
+	            'email'  :   $('#email').val(),
+	            'mobile'  :   $('#mobile').val()
+	    };
+	
+	
+	$.ajax({
+		  url: "create_user",
+		  type: "POST",
+		  data:JSON.stringify(input_json),
+		  contentType: "application/json",
+		  cache: false,
+		  success: function(response){
+		   alert("user created!");
+		  }
+		});
+
+}
+</script>
 <script>
 
 
@@ -645,7 +673,7 @@ function logoInit() {
  
 <a href="#" onclick="ocultar_login_sign_up()" ></a>
    <h2>LOGIN</h2>
- <input type="text"  name="j_username" placeholder="Email" />
+ <input type="text"  name="j_username" placeholder="User Name" />
 <input type="password" name="j_password"  placeholder="Password" />
 <button type="submit" class="btn_login" onclick="cambiar_login()">LOGIN</button>
 
@@ -654,12 +682,15 @@ function logoInit() {
   
    <div class="cont_form_sign_up">
 <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-     <h2>SIGN UP</h2>
-<input type="text" placeholder="Email" />
-<input type="text" placeholder="User" />
-<input type="password" placeholder="Password" />
-<input type="password" placeholder="Confirm Password" />
-<button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+<h2>SIGN UP</h2>
+<input type="text" id="email" placeholder="Email" />
+<input type="text" id="userName" placeholder="User Name" />
+<input type="password" id="password" placeholder="Password" />
+<input type="text" id="firstName" placeholder="First Name" />
+<input type="text" id="lastName" placeholder="Last Name" />
+<input type="text" id="mobile" placeholder="Phone" />
+<button onclick="signupUser()">SIGN UP</button>
+<button class="btn_sign_up" >SIGN UP</button>
 
   </div>
 

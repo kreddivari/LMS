@@ -10,4 +10,5 @@ public interface CategoryDAO extends BaseDAO<Category, Serializable> {
 	public void createCategory(Category category) throws GenericDAOException;
 	public void updateCategory(Category category) throws GenericDAOException;	
 	public List<Category> getAllCategories() throws GenericDAOException ;
+	public Category getCategoryById(int id) throws GenericDAOException ;
 }

@@ -1,0 +1,33 @@
+package com.zen.smi.service.impl;
+
+import java.util.List;
+
+import com.zen.smi.bo.RoomBO;
+import com.zen.smi.dao.entities.Room;
+import com.zen.smi.dao.exception.GenericDAOException;
+import com.zen.smi.exception.BusinessException;
+import com.zen.smi.service.RoomService;
+
+public class RoomServiceImpl extends BaseService implements RoomService {
+
+	public void addRoom(RoomBO room) throws BusinessException{
+		
+	}
+	public void updateRoom(RoomBO room) throws BusinessException{
+		
+	}	
+	public List<RoomBO> getAllRooms() throws BusinessException{
+		List<RoomBO> roomsBO=new ArrayList<RoomBO>();
+		try {
+			List<Room> rooms=  getRoomDAO().retrieveAll();
+			for(Room room:rooms){
+				RoomBO roomBO=new RoomBO();
+			}
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return null;
+	}
+
+}

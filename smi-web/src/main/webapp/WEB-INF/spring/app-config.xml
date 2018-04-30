@@ -24,9 +24,12 @@
    <bean id="booksDAO" class="com.zen.smi.dao.impl.BooksDAOImpl"/>
    <bean id="finesDAO" class="com.zen.smi.dao.impl.FinesDAOImpl"/>
    <bean id="notificationDAO" class="com.zen.smi.dao.impl.NotificationDAOImpl"/>
+    <bean id="userNotificationDAO" class="com.zen.smi.dao.impl.UserNotificationDAOImpl"/>
    <bean id="roomDAO" class="com.zen.smi.dao.impl.RoomDAOImpl"/>  
    <bean id="categoryDAO" class="com.zen.smi.dao.impl.CategoryDAOImpl"/>
-   <bean id="userBooksDAO" class="com.zen.smi.dao.impl.UsersBooksDAOImpl"/>
+   <bean id="userBooksDAO" class="com.zen.smi.dao.impl.UsersBooksDAOImpl"/>    
+   <bean id="bookcategoryDAO" class="com.zen.smi.dao.impl.BookCategoryDAOImpl"/>
+    <bean id="userRoomDAO" class="com.zen.smi.dao.impl.UserRoomDAOImpl"/> 
 		
    
     <bean id="gson" class="com.google.gson.Gson"/>

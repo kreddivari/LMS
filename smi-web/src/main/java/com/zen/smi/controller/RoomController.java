@@ -1,11 +1,15 @@
 package com.zen.smi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,19 +33,48 @@ public class RoomController extends BaseController {
 	
 	
 	
-	@RequestMapping(value = "/create_room", method = RequestMethod.POST)
-	public @ResponseBody String addRoom(@RequestBody String userJson,HttpServletRequest request,
+	@RequestMapping(value = "/reserve_room", method = RequestMethod.POST)
+	public @ResponseBody String reserveRoom(@RequestBody String roomJson,HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String result = null;
+		try {
+			RoomBO roomBO=gson.fromJson(roomJson, RoomBO.class);
+			String  user = SecurityContextHolder.getContext().getAuthentication().getName();			
+			roomService.reserveRoom(user,roomBO);
+		} catch (Throwable th) {
+			th.printStackTrace();
+			roomJson = handleOtherError(th);
+		}
+		return result;
+	}
+	
+	
+	
+	@RequestMapping(value = "/all_rooms", method = RequestMethod.GET)
+	public @ResponseBody String getRooms(HttpServletRequest request,
 			HttpServletResponse response) throws BusinessException {
 		String json = "SUCCESS";
-		try {			
-			RoomBO roomBO= gson.fromJson(json, RoomBO.class);
-			roomService.addRoom(roomBO);		
+		try {					
+			List<RoomBO> rooms=roomService.getAllRooms();	
+			json=gson.toJson(rooms);
 		} catch (Throwable th) {
 			th.printStackTrace();
 			json = handleOtherError(th);
 		}
 		return json;
 	}
-	
-	
+	@RequestMapping(value = "/user_rooms", method = RequestMethod.GET)
+	public @ResponseBody String getUserRooms(HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String json = "SUCCESS";
+		try {	
+			String  user = SecurityContextHolder.getContext().getAuthentication().getName();
+			List<RoomBO> rooms=roomService.getRoomsByUserId(user);	
+			json=gson.toJson(rooms);
+		} catch (Throwable th) {
+			th.printStackTrace();
+			json = handleOtherError(th);
+		}
+		return json;
+	}
 }

@@ -1,7 +1,0 @@
-package com.zen.smi.service.impl;
-
-import com.zen.smi.service.UserBookService;
-
-public class UserBookServiceImpl extends BaseService implements UserBookService{
-
-}
