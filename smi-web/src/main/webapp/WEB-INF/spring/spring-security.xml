@@ -55,9 +55,9 @@ xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.
         <security:intercept-url pattern='/admin_rooms' access='ROLE_ADMIN'/>
         <security:intercept-url pattern='/arooms' access='ROLE_ADMIN'/>        
         <security:intercept-url pattern='/login' access='ROLE_ANONYMOUS, ROLE_USER'/>
-        <security:intercept-url pattern='/resources/*' access='ROLE_ANONYMOUS,ROLE_USER'/>
+        <security:intercept-url pattern='/resources/*' access='ROLE_ANONYMOUS,ROLE_USER,ROLE_ADMIN'/>
         <security:intercept-url pattern="/documents/**" access='ROLE_USER'/>
-        <security:intercept-url pattern="/**" access="ROLE_USER" />
+        <security:intercept-url pattern="/**" access="ROLE_ANONYMOUS,ROLE_USER,ROLE_ADMIN" />
         
     </security:http>
    
