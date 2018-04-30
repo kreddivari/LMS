@@ -12,5 +12,6 @@ public interface UserRoomDAO extends BaseDAO<UserRoom, Serializable> {
 	public void updateUserRoom(UserRoom userRoom) throws GenericDAOException;	
 	public List<UserRoom> getAllUserRooms() throws GenericDAOException;
 	public List<Room> getAllUserRoomsByUserId(int id) throws GenericDAOException;
+	public UserRoom getAllUserRoomsByRoomId(int id) throws GenericDAOException;
 
 }

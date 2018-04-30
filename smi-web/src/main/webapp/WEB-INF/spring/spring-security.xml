@@ -13,6 +13,8 @@ xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.
         </beans:props>
     </beans:property>
     </beans:bean>
+     <beans:bean id="myAuthenticationSuccessHandler" class="com.zen.smi.security.MySimpleUrlAuthenticationSuccessHandler" />
+  
     <beans:bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter">
         <beans:property name="sessionRegistry" ref="sessionRegistry" />
         <beans:property name="expiredUrl" value="/logout" />
@@ -29,7 +31,9 @@ xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.
     <security:http auto-config="true" pattern="/**">
         <!-- Login pages -->
         <security:form-login login-page="/login" default-target-url="/home" login-processing-url="/j_spring_security_check" 
-          authentication-failure-handler-ref="authenticationFailureHandler" always-use-default-target="true"/>
+          authentication-failure-handler-ref="authenticationFailureHandler" 
+          authentication-success-handler-ref="myAuthenticationSuccessHandler"
+           always-use-default-target="true"/>
         <security:logout logout-success-url="/login" invalidate-session="true" logout-url="/logout"/>
         
          <security:session-management invalid-session-url="/login">
@@ -40,7 +44,16 @@ xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.
         <security:intercept-url pattern="/logout"/>
         <!-- Security zones -->
         <security:intercept-url pattern='/home' access='ROLE_USER'/>
-        
+        <security:intercept-url pattern='/profile' access='ROLE_USER'/>
+        <security:intercept-url pattern='/books' access='ROLE_USER'/>
+        <security:intercept-url pattern='/rooms' access='ROLE_USER'/>
+        <security:intercept-url pattern='/history' access='ROLE_USER'/>
+        <security:intercept-url pattern='/admin' access='ROLE_ADMIN'/>
+        <security:intercept-url pattern='/aprofile' access='ROLE_ADMIN'/>
+        <security:intercept-url pattern='/abooks' access='ROLE_ADMIN'/>
+        <security:intercept-url pattern='/admin_books' access='ROLE_ADMIN'/>
+        <security:intercept-url pattern='/admin_rooms' access='ROLE_ADMIN'/>
+        <security:intercept-url pattern='/arooms' access='ROLE_ADMIN'/>        
         <security:intercept-url pattern='/login' access='ROLE_ANONYMOUS, ROLE_USER'/>
         <security:intercept-url pattern='/resources/*' access='ROLE_ANONYMOUS,ROLE_USER'/>
         <security:intercept-url pattern="/documents/**" access='ROLE_USER'/>

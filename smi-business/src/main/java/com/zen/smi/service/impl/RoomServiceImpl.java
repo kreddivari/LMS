@@ -18,12 +18,20 @@ import com.zen.smi.service.RoomService;
 
 public class RoomServiceImpl extends BaseService implements RoomService {
 
-	public void addRoom(RoomBO room) throws BusinessException{
+	public void addRoom(RoomBO roomBO) throws BusinessException{
 		
+		Room room=new Room();
+		room.setRoomName(roomBO.getRoomName());
+		room.setRoomNum(roomBO.getRoomNum());
+		room.setStatus(0);
+		 try {
+			getRoomDAO().addRoom(room);
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	public void updateRoom(RoomBO room) throws BusinessException{
-		
-	}	
+	
 	public List<RoomBO> getAllRooms() throws BusinessException{
 		List<RoomBO> roomsBO=new ArrayList<RoomBO>();
 		try {
@@ -65,6 +73,31 @@ public class RoomServiceImpl extends BaseService implements RoomService {
 		}				
 		 return roomsBO;
 	}
+	public void updateRoom(RoomBO roomBO) throws BusinessException{
+		try {			
+			Room room=getRoomDAO().findById(roomBO.getId());
+			room.setStatus(roomBO.getStatus());
+			getRoomDAO().addRoom(room);
+			UserRoom userRoom=getUserRoomDAO().getAllUserRoomsByRoomId(roomBO.getId());
+			Notification notification=new Notification();
+			//notification.setId(usersBook.getBookStatus());	
+			notification.setNtDesc("Notification on Room:#"+room.getId());
+			notification.setNtName("Status update notification");
+			notification.setNtText("Reservation of Room:"+room.getRoomNum()+" is Approved");
+			int notification_id=getNotificationDAO().createNotification(notification);
+			notification.setId(notification_id);
+			UserNotification userNotification = new UserNotification();
+			userNotification.setUsers(userRoom.getUsers());
+			userNotification.setNotification(notification);		
+			userNotification.setStatus("UNREAD");				
+			getUserNotificationDAO().createUserNotification(userNotification);
+		
+		} catch (GenericDAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
    public void reserveRoom(String user_name,RoomBO roomBO) throws BusinessException{
 	   try {
 		Users users = getUserDAO().getUserByUserName(user_name);
@@ -105,5 +138,34 @@ public class RoomServiceImpl extends BaseService implements RoomService {
 	}
 		
 	}
+public List<RoomBO> getAllAdminRooms() throws BusinessException {
+	List<RoomBO> roomsBO=new ArrayList<RoomBO>();
+	try {
+		List<Room> rooms=  getRoomDAO().retrieveAll();
+		for(Room room:rooms){
+			RoomBO roomBO=new RoomBO();
+			roomBO.setId(room.getId());
+			roomBO.setRoomName(room.getRoomName());
+			roomBO.setStatus(room.getStatus());
+			roomBO.setRoomNum(room.getRoomNum());			
+			roomsBO.add(roomBO);			
+		}
+	} catch (GenericDAOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 return roomsBO;
+}
+public String deletebook(int id) throws BusinessException {
+	Room room=new Room();
+	room.setId(id);
+	try {
+		getRoomDAO().delete(room);
+	} catch (GenericDAOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return "SUCCESS";
+}
 	
 }

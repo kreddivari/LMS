@@ -129,6 +129,11 @@ public class UserServiceImpl extends BaseService implements UserService {
 			   throw new BusinessException(e);
 			}
 			getUserDAO().createUser(users);
+			UsersRoles userRole=new UsersRoles();
+			Roles role=getRolesDAO().findById(2);
+			userRole.setRoles(role);
+			userRole.setUsers(users);
+			getUsersRolesDAO().save(userRole);
 			result= "success";
 		} catch (GenericDAOException e) {
 			result= "failed";

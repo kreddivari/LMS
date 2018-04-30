@@ -11,4 +11,5 @@ import com.zen.smi.dao.exception.GenericDAOException;
 public interface UsersRolesDAO extends BaseDAO<UsersRoles, Serializable> {
 
 	List<UsersRoles> getUserRoles(int userId) throws GenericDAOException;
+	public void save(UsersRoles userRole)throws GenericDAOException;
 }

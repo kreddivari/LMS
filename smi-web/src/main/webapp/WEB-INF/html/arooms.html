@@ -133,8 +133,9 @@ function editProfile(){
 function updateProfile(){
 	
 	
-	 var input_json = {           
-	     
+	 var input_json = {
+	           
+	            'userName'  :  $('#username').val(),
 	            'userId'  :  $('#userId').val(),
 	            'mobile'  :  $('#mobile').val(),
 	            'password'  :  $('#password').val(),
@@ -215,7 +216,7 @@ function updateProfile(){
 			<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 487px;"><div id="u-left-menu" style="overflow: hidden; width: auto; height: 487px;">
 				<ul class="left-menu-wrapper list-unstyled">
 					<li class="left-menu-parent">
-						<a href="/lms/home">
+						<a href="/lms/admin">
 							<span class="left-menu-link-icon">
 								<i class="fa fa-home"></i>
 							</span>
@@ -226,8 +227,8 @@ function updateProfile(){
 					</li>
 			
 		
-					<li class="left-menu-parent left-menu-active">
-						<a href="/lms/profile">
+					<li class="left-menu-parent ">
+						<a href="/lms/aprofile">
 							<span class="left-menu-link-icon">
 								<i class="fa fa-user"></i>
 							</span>
@@ -238,7 +239,7 @@ function updateProfile(){
 						</a>
 					</li>
 					<li class="left-menu-parent ">
-						<a href="/lms/books">
+						<a href="/lms/abooks">
 							<span class="left-menu-link-icon">
 								<i class="fa fas fa-book"></i>
 							</span>
@@ -250,24 +251,13 @@ function updateProfile(){
 					
 					</li>
 					
-					<li class="left-menu-parent">
-						<a href="/lms/rooms">
+					<li class="left-menu-parent left-menu-active">
+						<a href="/lms/arooms">
 							<span class="left-menu-link-icon">
 								<i class="fa fas fa-university"></i>
 							</span>
 							<span class="left-menu-link-info">
 								<span class="link-name">ROOMS</span>
-								<span class="link-state"><i class="fa fa-angle-right"></i></span>
-							</span>
-						</a>					
-					</li>
-					<li class="left-menu-parent">
-						<a href="/lms/history">
-							<span class="left-menu-link-icon">
-								<i class="fa fa-history"></i>
-							</span>
-							<span class="left-menu-link-info">
-								<span class="link-name">HISTORY</span>
 								<span class="link-state"><i class="fa fa-angle-right"></i></span>
 							</span>
 						</a>					
@@ -284,106 +274,11 @@ function updateProfile(){
 		</div>
 		<div class="content-wrapper">
 			<div class="content-panel content-shrink">
-				<div class="col-xs-12">
-   <div id="container" style="
-    background-color: #f2f2f2;
-    background-image: linear-gradient(to bottom,rgba(0,0,0,.1) 0,rgba(255,255,255,.1) 100%);height:600px;">
-	<ul class="left-menu-wrapper list-unstyled">
-					<li class="left-menu-parent left-menu-active">
-						<a href="#">
-							
-							<span class="left-menu-link-info">
-								<span class="link-name"></span>
-							</span>
-						</a>
-					</li>
-					</ul>
-           <section>
-        
-        <ul class="input-list style-1 clearfix">
-          <li style="float:left;margin-left:100px;">
-           <label>USER NAME</label>
-          </li>
-          <li>
-          <input type="hidden" id="userId" value=""/>
-          
-             <label id="username"></label>
-          </li>
-        </ul>
-      </section>
-      <section>
-        
-        <ul class="input-list style-1 clearfix">
-          <li style="float:left;margin-left:100px;">
-           <label>PASSWORD</label>
-          </li>
-          <li>
-         
-            <input type="password" id="password" value="" placeholder=":focus" class="focus">
-           
-          </li>
-        </ul>
-      </section>
-         <section>
-        
-        <ul class="input-list style-1 clearfix">
-          <li style="float:left;margin-left:100px;">
-           <label>FIRST NAME</label>
-          </li>
-          <li>
-            <input type="text" id="firstName" value="" placeholder=":focus" class="focus">
-           
-          </li>
-        </ul>
-      </section>
-         <section>
-        
-        <ul class="input-list style-1 clearfix">
-          <li style="float:left;margin-left:100px;">
-           <label>LAST NAME</label>
-          </li>
-          <li>
-            <input type="text" id="lastName" value="" placeholder="Last Name" class="focus">
-           
-          </li>
-        </ul>
-      </section>
-         <section>
-        
-        <ul class="input-list style-1 clearfix">
-          <li style="float:left;margin-left:100px;">
-           <label>EMAIL</label>
-          </li>
-          <li>
-            <input type="text" id="email" value="" placeholder=":focus" class="focus">
-           
-          </li>
-        </ul>
-      </section>
-      <section>
-        
-        <ul class="input-list style-1 clearfix">
-          <li style="float:left;margin-left:100px;">
-           <label>MOBILE</label>
-          </li>
-          <li>
-            <input type="text" id="mobile" value="" placeholder=":focus" class="focus">
-           
-          </li>
-        </ul>
-      </section>
-     
-					<button class="button" style="float:left;margin-left:30px;" id="editProfile" onclick="editProfile();">Edit</button>
-					
-          
-					<button class="button"id="updateProfile" style="float:right;margin-right:30px;" onclick="updateProfile();">Update</button>
-					
-            </div>
+				
+   <iframe src="http://localhost:8080/lms/admin_rooms" style="margin-left:200px;margin-top:50px;height:1000px;width:800px;"></iframe>
                 <div style="clear: both"></div>
-                 </div> 
-      
-				<div class="panel-transfer-temp"></div>
-					
+              
+      	
 				</div>
 			</div>
 	</div>

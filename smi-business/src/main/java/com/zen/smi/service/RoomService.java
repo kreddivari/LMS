@@ -11,5 +11,7 @@ public interface RoomService {
 	public List<RoomBO> getAllRooms() throws BusinessException;
 	public void reserveRoom(String user, RoomBO roomBO)throws BusinessException;
 	public List<RoomBO> getRoomsByUserId(String user)throws BusinessException;
+	public List<RoomBO> getAllAdminRooms()throws BusinessException;
+	public String deletebook(int id)throws BusinessException;
 
 }

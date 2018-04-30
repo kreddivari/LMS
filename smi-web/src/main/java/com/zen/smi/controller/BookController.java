@@ -65,7 +65,7 @@ public class BookController extends BaseController {
 		try {
 			
 			BookBO bookBO= gson.fromJson(bookJson, BookBO.class);
-			bookJson=bookService.createbook(bookBO);			
+			bookJson=bookService.updatebook(bookBO);			
 			bookJson=gson.toJson(bookBO);
 		} catch (Throwable th) {
 			th.printStackTrace();
@@ -142,6 +142,19 @@ public class BookController extends BaseController {
 		String bookJson = null;
 		try {			
 			List<BookBO> booksBO=bookService.getAllBooks();	
+			bookJson=gson.toJson(booksBO);
+		} catch (Throwable th) {
+			th.printStackTrace();
+			bookJson = handleOtherError(th);
+		}
+		return bookJson;
+	}
+	@RequestMapping(value = "/admin_all_books", method = RequestMethod.GET)
+	public @ResponseBody String getAllBooksForAdmin(HttpServletRequest request,
+			HttpServletResponse response) throws BusinessException {
+		String bookJson = null;
+		try {			
+			List<BookBO> booksBO=bookService.getAllBooksForAdmin();	
 			bookJson=gson.toJson(booksBO);
 		} catch (Throwable th) {
 			th.printStackTrace();

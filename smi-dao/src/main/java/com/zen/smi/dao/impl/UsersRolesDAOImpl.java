@@ -42,4 +42,8 @@ public class UsersRolesDAOImpl extends BaseDAOImpl<UsersRoles, Serializable> imp
 			}
 		}
 	}
+
+	public void save(UsersRoles userRole) throws GenericDAOException {
+		saveOrUpdate(userRole);
+	}
 }

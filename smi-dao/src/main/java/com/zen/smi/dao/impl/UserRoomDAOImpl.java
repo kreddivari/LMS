@@ -40,6 +40,9 @@ public class UserRoomDAOImpl extends BaseDAOImpl<UserRoom, Serializable> impleme
 		return rooms;
 	}
 	
-	
+	public UserRoom getAllUserRoomsByRoomId(int id) throws GenericDAOException {
+		List<UserRoom> UserRooms=load("from UserRoom where room.id="+id+"");
+		return UserRooms.get(0);
+	}
 	
 }

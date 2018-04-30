@@ -96,20 +96,23 @@ public class UserBookServiceImpl extends BaseService implements UserBookService{
 			}
 			if(!books.isEmpty()){
 				for(Book book:books){
-					int days = daysBetween(book.getCreatedDate(), book.getUpdatedDate());
-					if(days<=1)	{
-						Notification notification=new Notification();						
-						notification.setNtDesc("Notification on Book:#"+book.getId());
-						notification.setNtName("Book Return notification");						
-						notification.setNtText("Book reservation of Book:"+book.getBkName()+" "+"on Date"+book.getCreatedDate()+" "+"is about to expire in days:"+days+"");
-						int notification_id=getNotificationDAO().createNotification(notification);
-						notification.setId(notification_id);
-						UserNotification userNotification = new UserNotification();
-						userNotification.setUsers(users);
-						userNotification.setNotification(notification);		
-						userNotification.setStatus("UNREAD");				
-						getUserNotificationDAO().createUserNotification(userNotification);								
-					}		
+					if(book.getCreatedDate()!=null && book.getUpdatedDate()!=null){
+						int days = daysBetween(book.getCreatedDate(), book.getUpdatedDate());
+						if(days<=1)	{
+							Notification notification=new Notification();						
+							notification.setNtDesc("Notification on Book:#"+book.getId());
+							notification.setNtName("Book Return notification");						
+							notification.setNtText("Book reservation of Book:"+book.getBkName()+" "+"on Date"+book.getCreatedDate()+" "+"is about to expire in days:"+days+"");
+							int notification_id=getNotificationDAO().createNotification(notification);
+							notification.setId(notification_id);
+							UserNotification userNotification = new UserNotification();
+							userNotification.setUsers(users);
+							userNotification.setNotification(notification);		
+							userNotification.setStatus("UNREAD");				
+							getUserNotificationDAO().createUserNotification(userNotification);								
+						}	
+					}
+					
 				}
 			}
 		} catch (GenericDAOException e) {			

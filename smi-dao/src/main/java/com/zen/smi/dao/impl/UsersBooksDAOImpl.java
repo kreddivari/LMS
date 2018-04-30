@@ -33,6 +33,9 @@ public class UsersBooksDAOImpl extends BaseDAOImpl<UsersBooks, Serializable> imp
 		List<UsersBooks> userBooks=load("from UsersBooks where users.userId="+id+"");
 		return userBooks;
 	}
-	
+	public UsersBooks getAllUsersBooksbyBookId(int id) throws GenericDAOException {
+		List<UsersBooks> userBooks=load("from UsersBooks where book.id="+id+"");
+		return userBooks.get(0);
+	}
 	
 }

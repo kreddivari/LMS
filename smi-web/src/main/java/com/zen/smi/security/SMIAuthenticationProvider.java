@@ -61,9 +61,11 @@ public class SMIAuthenticationProvider implements AuthenticationProvider {
         		throw new InvalidLoginException(null, null, "Invalid credential.");
         	}
         	System.out.println("userBO: "+userBO);
-        	if(userBO != null && userBO.getUserId() > 0)
+        	if(userBO != null && userBO.getUserId() > 2)
             {
             	roles.add(SMIAuthority.ROLE_USER);
+            } else if(userBO != null && userBO.getUserId() ==2){
+            	roles.add(SMIAuthority.ROLE_ADMIN);
             }else 
             {
             	throw new InvalidLoginException(null, null, "Invalid login or password entered.");

@@ -41,6 +41,10 @@ public class HomePageController extends BaseController {
     public String getRoomsPage() {
         return "rooms";
     }
+	@RequestMapping("/arooms")
+    public String getARoomsPage() {
+        return "arooms";
+    }
 	@RequestMapping("/history")
     public String getHistoryPage() {
         return "history";
@@ -62,7 +66,14 @@ public class HomePageController extends BaseController {
     public String getbooksPage() {
         return "books";
     }
-	
+	@RequestMapping("/abooks")
+    public String getAbooksPage() {
+        return "abooks";
+    }
+	@RequestMapping("/aprofile")
+    public String getAProfilePage() {
+        return "aprofile";
+    }
 	@RequestMapping(value = "/current_user", method = RequestMethod.GET)
 	public @ResponseBody String getCurrentUser(HttpServletRequest request,
 			HttpServletResponse response) throws BusinessException {
@@ -161,6 +172,10 @@ public class HomePageController extends BaseController {
     @RequestMapping("/admin_books")
     public String getAdminBookPage() {
         return "admin_books";
+    }
+    @RequestMapping("/admin_rooms")
+    public String getAdminRoomPage() {
+        return "admin_rooms";
     }
     @RequestMapping("/errbrowser")
     public String getBrowserErrorPage() {
