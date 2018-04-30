@@ -73,7 +73,7 @@ function searchBook(){
 	}
 
 	function searchBookByCategory(thi){
-		alert(thi);
+		
 	     $.ajax({  
 		       url: "category/"+thi+"",
 		       type: "POST",
@@ -96,13 +96,12 @@ function searchBook(){
 	}
 	
 function reserveBook(book_id){
-	alert("");
+	
 	$.ajax({
 		  url: "reserve_book/"+book_id+"",
 		  type: "POST",		 
 		  success: function(response){	
-			// var key= $.parseJSON(response);	
-			alert(response);
+			
 			$("#reserve"+book_id).css({"background-color":"#838383"});
 			$("#reserve"+book_id).prop('onclick',null).off('click');
 		  }
